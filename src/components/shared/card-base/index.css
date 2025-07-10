@@ -1,5 +1,5 @@
 .card-base {
-  background-image: url('../../../assets/card-background.png');
+  background-image: url('card-background.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
   display: flex;

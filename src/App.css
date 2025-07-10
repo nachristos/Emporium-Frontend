@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("./src/assets/bg.png");
+  background-image: url("bg.png");
   background-size: cover;
   overflow: hidden;
 }
@@ -35,14 +35,6 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-.logo {
-  height: 160px;
-  background-image: url('https://raw.githubusercontent.com/robinmetral/robinmetral/main/assets/logo.png');
-  background-size: cover;
-  background-position: center;
-  animation: logo-spin infinite 20s linear;
 }
 
 h1 {
