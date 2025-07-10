@@ -1,10 +1,10 @@
-export const Page2 = () => {
+export const Account = () => {
   return (
-    <div className="w-full center">
+    <div className="center">
       <div>
         <img src="./src/assets/dr-nef-2.png" className="logo" alt="Rd Nefario" />
         <div className='my title'>
-          Page 2
+          Account Page
         </div>
       </div>
     </div>

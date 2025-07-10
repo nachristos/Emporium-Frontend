@@ -1,10 +1,10 @@
-export const Page1 = () => {
+export const Cart = () => {
   return (
     <div className="w-full center">
       <div>
-        <img src="./src/assets/dr-nef-1.webp" className="logo" alt="Rd Nefario" />
+        <img src="./src/assets/dr-nef-3.webp" className="logo" alt="Rd Nefario" />
         <div className='my title'>
-          Page 1
+          Cart Page
         </div>
       </div>
     </div>

@@ -1,0 +1,13 @@
+.icon-button {
+  display: flex;
+  border: none;
+  background: none;
+  color: var(--primary-color);
+}
+.icon-button:hover {
+  color: var(--secondary-color);
+}
+
+.active {
+  color: var(--secondary-color);
+}

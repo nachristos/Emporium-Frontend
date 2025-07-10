@@ -1,0 +1,32 @@
+.primary {
+  font-family: "Bangers", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  border: 2px solid #FF4C4C;
+  border-radius: 9px;
+  background-color: #FF4C4C;
+  color: #F5F5F5;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 18px;
+  justify-content: center;
+}
+.primary:focus {
+  outline: none;
+  border-color: #FF4C4C;
+}
+.primary:hover {
+  background-color: #E94747;
+  color: #F5F5F5;
+}
+
+.regular {
+  line-height: 14px;
+  height: 36px;
+}
+
+.large {
+  line-height: 44px;
+  height: 48px;
+}

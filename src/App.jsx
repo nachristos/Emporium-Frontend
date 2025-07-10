@@ -1,20 +1,24 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import { Page1 } from './components/page-1'
-import { Navigation } from './navigation'
-import { Page2 } from './components/page-2'
-import { Page3 } from './components/page-3'
+import { Navigation } from './components/navigation/index.jsx'
+import { Account } from './pages/account-page/index.jsx'
+import { Cart } from './pages/cart/index.jsx'
+import { Home } from './pages/home/index.jsx'
+import { Login } from './pages/login/index.jsx'
 
 function App() {
 
   return (
     <BrowserRouter>
       <Navigation />
-      <Routes>
-        <Route path={'/page-1'} element={<Page1 />}/>
-        <Route path={'/page-2'} element={<Page2 />}/>
-        <Route path={'/page-3'} element={<Page3 />}/>
-      </Routes>
+      <div className="page">
+          <Routes>
+            <Route path={'/login'} element={<Login />}/>
+            <Route path={'/home'} element={<Home />}/>
+            <Route path={'/account'} element={<Account />}/>
+            <Route path={'/cart'} element={<Cart />}/>
+          </Routes>
+      </div>
     </BrowserRouter>
   )
 }
