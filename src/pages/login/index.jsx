@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { Button } from "../../components/shared/button"
 import { CardBase } from "../../components/shared/card-base"
 import { Input } from "../../components/shared/input"
+import logo from '../../assets/logo.svg'
 import './index.css'
 
 export const Login = () => {
@@ -22,7 +23,7 @@ export const Login = () => {
     <div className="scrollable">
       <div className="login-wrapper">
         <div className="w-full mb center">
-          <img src="./src/assets/logo.svg" className="logo" alt="Rd Nefario" />
+          <img src={logo} className="logo" alt="Rd Nefario" />
         </div>
           <CardBase>
             <div className="login container center">
