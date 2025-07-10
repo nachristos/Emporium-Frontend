@@ -1,0 +1,9 @@
+.card-base {
+  background-image: url('../../../assets/card-background.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* max-width: 356px; */
+}

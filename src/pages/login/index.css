@@ -1,0 +1,16 @@
+.title {
+  font-size: 35px;
+  font-weight: 500;
+}
+
+.login {
+  width: 368px;
+  height: 430px;
+}
+
+@media screen and (max-width: 480px) {
+  .login {   
+    max-width: 100%;
+    width: 100vw;
+  } 
+}

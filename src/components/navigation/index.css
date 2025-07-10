@@ -1,0 +1,19 @@
+
+.nav {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  position: fixed;
+  box-sizing: border-box;
+  top: 0;
+}
+
+.nav .logo {
+  height: 40px;
+  margin-top: -16px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
