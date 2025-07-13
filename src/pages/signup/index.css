@@ -1,0 +1,15 @@
+.login {
+  width: 368px;
+  height: 430px;
+}
+
+.signup button {
+  width: 120px;
+}
+
+.signup .icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 4px;
+  margin-bottom: -2px;
+}

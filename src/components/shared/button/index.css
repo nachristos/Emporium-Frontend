@@ -1,16 +1,20 @@
-.primary {
+
+button {
   font-family: "Bangers", system-ui;
   font-weight: 400;
+  font-size: 18px;
   font-style: normal;
-  border: 2px solid #FF4C4C;
   border-radius: 9px;
-  background-color: #FF4C4C;
-  color: #F5F5F5;
+  box-sizing: border-box;
+  justify-content: center;
   display: flex;
   width: 100%;
-  box-sizing: border-box;
-  font-size: 18px;
-  justify-content: center;
+}
+
+.primary {
+  border: 2px solid #FF4C4C;
+  background-color: #FF4C4C;
+  color: #F5F5F5;
 }
 .primary:focus {
   outline: none;
@@ -18,11 +22,35 @@
 }
 .primary:hover {
   background-color: #E94747;
+  color: #DEDEDE;
+}
+.primary:disabled {
+  border: 2px solid #FFC1C1;
+  background-color: #FFC1C1;
   color: #F5F5F5;
 }
 
+.secondary {
+  border: 2px solid var(--text-color);
+  background-color: var(--text-color);
+  color: var(--cta-color);
+}
+.secondary:focus {
+  outline: none;
+  border-color: #DEDEDE;
+}
+.secondary:hover {
+  background-color: #DEDEDE;
+  color: #E94747;
+}
+.secondary:disabled {
+  border: 2px solid #FCFCFC;
+  background-color: #FCFCFC;
+  color: #FFC1C1;
+}
+
 .regular {
-  line-height: 14px;
+  line-height: 32px;
   height: 36px;
 }
 
