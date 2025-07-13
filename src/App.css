@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("/public/bg.png");
+  background-image: url("/bg.png");
   background-size: cover;
   overflow: hidden;
 }
@@ -28,6 +28,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  max-width: 360px;
 }
 
 .center {
@@ -43,44 +44,66 @@
 
 h1 {
   font-family: "Bangers", system-ui;
-  font-weight: 400;
   font-style: normal;
 }
 
 h2 {
   font-family: "Orbitron", system-ui;
-  font-weight: 400;
-  font-size: 26px;
   font-style: normal;
-  color: #F5F5F5;
   margin-block: 4px;
 }
 
 h4 {
   font-family: "Nunito", sans-serif;
-  font-size: 26px;
-  font-weight: 400;
-  color: #F5F5F5;
   font-style: normal;
   margin-block: 4px;
 }
 
 h5{
   font-family: "Nunito", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  color: #F5F5F5;
   font-style: normal;
   margin-block: 4px;
+}
+
+.title {
+  font-size: 35px;
+  font-weight: 500;
+}
+
+.heading {
+  font-weight: 400;
+  font-size: 26px;
+}
+
+.strong {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.body {
+  font-size: 16px;
+  font-weight: 500;
 }
 
 a{
   font-family: "Nunito", sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: #F5F5F5;
   font-style: normal;
   margin-block: 4px;
+}
+
+.pri {
+  color: var(--primary-color);
+}
+.sec {
+  color: var(--secondary-color);
+}
+.cta {
+  color: var(--cta-color);
+}
+.text {
+  color: var(--text-color);
 }
 
 a:hover {
@@ -90,6 +113,10 @@ a:hover {
 
 .flex {
   display: flex;
+}
+
+.between {
+  justify-content: space-between;
 }
 
 .w-full {
@@ -106,6 +133,10 @@ a:hover {
   margin-inline: 24px;
 }
 
+.mxs {
+  margin-inline: 12px;
+}
+
 .my {
   margin-block: 24px;
 }
@@ -116,6 +147,11 @@ a:hover {
 
 .p {
   padding: 24px;
+}
+
+.border-pri {
+  border: 3px solid var(--primary-color);
+  border-radius: 12px;
 }
 
 @keyframes logo-spin {

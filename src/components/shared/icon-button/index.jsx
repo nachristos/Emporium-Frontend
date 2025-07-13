@@ -2,7 +2,7 @@ import './index.css';
 
 export const IconButton = ({ link, onClick, active, className, children }) => {
   
-  const action = link ? () => window.location.href = link : onClick;
+  const action = link ? () => window.location.pathname = link : onClick;
   const activeState = active || window.location.pathname === link;
   
   return (

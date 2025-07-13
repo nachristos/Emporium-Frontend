@@ -4,14 +4,21 @@ import { UserIcon } from '../../assets/icons/user-icon';
 import { IconButton } from '../shared/icon-button';
 import logo from '../../assets/logo-small.png';
 import './index.css';
+import { useAuthContext } from '../../hooks/use-auth-context';
 
 export const Navigation = () => {  
+  const { setAuth } = useAuthContext();
+  
+  const handleMenuClick = () => {
+    setAuth(undefined);
+  }
+  
   return (
       <div className="nav" id={'nav'}>
           <div>
-            <IconButton className='icon-button'><MenuIcon/></IconButton>
+            <IconButton onClick={handleMenuClick} className='icon-button'><MenuIcon/></IconButton>
           </div>
-          <IconButton className='icon-button' link={'/login'}>
+          <IconButton className='icon-button' link={'/'}>
             <img className='logo' src={logo} alt='logo' />
           </IconButton>
           <div className='flex'>
