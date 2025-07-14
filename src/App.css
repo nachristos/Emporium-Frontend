@@ -85,12 +85,13 @@ h5{
   font-weight: 500;
 }
 
-a{
+a {
   font-family: "Nunito", sans-serif;
   font-size: 18px;
   font-weight: 700;
   font-style: normal;
   margin-block: 4px;
+  cursor: pointer;
 }
 
 .pri {
@@ -115,8 +116,18 @@ a:hover {
   display: flex;
 }
 
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .between {
   justify-content: space-between;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
 }
 
 .w-full {

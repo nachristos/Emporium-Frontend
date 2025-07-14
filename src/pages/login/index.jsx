@@ -9,8 +9,8 @@ import { useAuthContext } from "../../hooks/use-auth-context"
 
 const HIDDEN_PAGES = ['/login']
 
-export const Login = () => {
-  const { setAuth } = useAuthContext();
+export const Login = ({ redirect }) => {
+  const { token, setAuth } = useAuthContext();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   
@@ -21,6 +21,11 @@ export const Login = () => {
       nav.style.display = 'none';
     }
   }, []);
+    
+  if (redirect && token) {
+      window.location.pathname = '/home'
+  }
+  
   
   const handleSubmit = () => {
     post('/auth/signin', {
@@ -33,7 +38,10 @@ export const Login = () => {
         alert('Login failed. Please check your credentials.');
       }
     });
-    
+  }
+  
+  if (token) {
+    return <div>Lodaing...</div>
   }
   
   return (
