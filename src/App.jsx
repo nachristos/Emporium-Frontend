@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AuthContextProvider } from './context/auth-context/auth-context-provider.jsx'
 import { UserContextProvider } from "./context/user-context/user-context-provider.jsx"
 import { Signup } from './pages/signup/index.jsx'
+import { Login } from './pages/login/index.jsx'
 
 
 const queryClient = new QueryClient()
@@ -21,7 +22,7 @@ function App() {
           <Navigation />
           <div className="page">
               <Routes>
-                <Route path={'/'} element={<UserContextProvider children={<Home />} />}/>
+                <Route path={'/'} element={<Login redirect />}/>
                 <Route path={'/register'} element={<Signup />}/>
                 <Route path={'/home'} element={<Home />}/>
                 <Route path={'/account'} element={<UserContextProvider children={<Profile />} />}/>
