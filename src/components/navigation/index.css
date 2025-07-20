@@ -22,12 +22,23 @@
 .drawer {
   position: fixed;
   top: 0;
-  left: -260px;
+  left: -270px;
   width: 250px;
   height: 110%;
   margin-top: -20px;
   margin-left: -8px;
-  background-image: url('/card-background.png');
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  background: linear-gradient(84deg, #515c6f9f 49%, #4c687f9f 50%);
+  box-shadow: -30px  -30px 50px #5d37e835 inset;
+  border: 2px solid;
+  border-image: 
+    linear-gradient(
+      to bottom, 
+      #a268a5b0,
+      #cf8bff 
+    ) 1 100%;
+  
   background-size: 100% 100%;
   background-repeat: no-repeat;
   transition: left 0.3s ease-in-out;
@@ -36,7 +47,7 @@
 }
 
 .drawer.open {
-  left: 0; /* Slide in */
+  left: 0;
 }
 
 .drawer .icon {

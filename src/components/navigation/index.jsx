@@ -49,7 +49,7 @@ export const Navigation = () => {
                     <NavButton name={'About'} active={path === '/about'}/>
                     <div style={{ border: '1px solid white', marginBottom: 20 }} />
                   </div>
-                    <NavButton name={'Sign Out'} onClick={handleSignOut}/>
+                  <NavButton name={'Sign Out'} onClick={handleSignOut}/>
                 </div>
               </div>
             </div>
