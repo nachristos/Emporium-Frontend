@@ -18,11 +18,27 @@
   overflow-x: hidden;
   padding-top: 60px;
   padding-bottom: 60px;
+  max-width: 900px;
+}
+
+.divider {
+  border-top: 1px solid var(--text-color);
 }
 
 .icon {
   width: 28px;
   height: 28px;
+}
+
+.chevron {
+  padding-block: 12px;
+  rotate: 180deg;
+  color: var(--text-color);
+}
+
+.chevron.active {
+  rotate: 360deg;
+  color: var(--text-color);
 }
 
 .container {
@@ -50,6 +66,13 @@ h1 {
 h2 {
   font-family: "Orbitron", system-ui;
   font-style: normal;
+  font-weight: 500;
+  margin-block: 4px;
+}
+
+h3 {
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
   margin-block: 4px;
 }
 
@@ -60,6 +83,12 @@ h4 {
 }
 
 h5{
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  margin-block: 4px;
+}
+
+p {
   font-family: "Nunito", sans-serif;
   font-style: normal;
   margin-block: 4px;
@@ -122,6 +151,7 @@ a:hover {
 }
 
 .between {
+  display: flex;
   justify-content: space-between;
 }
 
@@ -148,6 +178,10 @@ a:hover {
   margin-inline: 12px;
 }
 
+.mys {
+  margin-block: 12px;
+}
+
 .my {
   margin-block: 24px;
 }
@@ -158,6 +192,24 @@ a:hover {
 
 .p {
   padding: 24px;
+}
+
+.px {
+  padding-inline: 24px;
+}
+
+.py {
+  padding-block: 24px;
+}
+
+.pt {
+  padding-top: 24px;
+}
+
+.end {
+  display: flex;
+  justify-content: end;
+  text-align: end;
 }
 
 .border-pri {

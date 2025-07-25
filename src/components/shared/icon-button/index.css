@@ -1,5 +1,5 @@
 .icon-button {
-  display: flex;
+  width: 50px;
   border: none;
   background: none;
   color: var(--primary-color);

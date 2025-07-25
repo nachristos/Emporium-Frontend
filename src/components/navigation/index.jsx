@@ -5,8 +5,10 @@ import { IconButton } from '../shared/icon-button';
 import logo from '../../assets/logo-small.png';
 import './index.css';
 import { useAuthContext } from '../../hooks/use-auth-context';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { CloseIcon } from '../../assets/icons/close-icon';
+import { SearchIcon } from '../../assets/icons/search-icon';
+import { Search } from './search';
 
 const NavButton = ({ name, onClick, active }) => {
   return (
@@ -19,6 +21,9 @@ const NavButton = ({ name, onClick, active }) => {
 export const Navigation = () => {
   const { setAuth } = useAuthContext();
   const [menuOpen, setMenuOpen] = useState();
+  const searchRef = useRef(null);
+  
+  const [searchOpen, setSearchOpen] = useState(false);
   
     const path = window.location.pathname;
     
@@ -34,14 +39,22 @@ export const Navigation = () => {
     setAuth(undefined);
   }
   
+  const handleSearchClick = () => {
+    setSearchOpen(!searchOpen)
+    searchRef.current.focus();
+  }
+  
   return (
       <div className="nav" id={'nav'}>
-          <div>
-            <IconButton onClick={handleMenuClick} className='icon-button'><MenuIcon/></IconButton>
+
+          <Search ref={searchRef} open={searchOpen} onBlur={() => setSearchOpen(false)} />
+        
+          <div className='flex'>
+            <IconButton onClick={handleMenuClick}><MenuIcon/></IconButton>
             <div>
               <div className={`drawer ${menuOpen ? 'open' : ''}`}>
                 <div className='close'>
-                  <IconButton className='icon-button' onClick={handleMenuClick}><CloseIcon/></IconButton>
+                  <IconButton onClick={handleMenuClick}><CloseIcon/></IconButton>
                 </div>
                 <div className='items flex-col text center between'>
                   <div className='w-full p'>
@@ -53,16 +66,20 @@ export const Navigation = () => {
                 </div>
               </div>
             </div>
+            
+            <div className='mxs'>
+              <IconButton className='icon-button' active={searchOpen} onClick={handleSearchClick}><SearchIcon /></IconButton>
+            </div>
           </div>
-          <IconButton className='icon-button' link={'/'}>
+          <IconButton link={'/'}>
             <img className='logo' src={logo} alt='logo' />
           </IconButton>
           <div className='flex'>
             <div className='mx'>
-              <IconButton className='icon-button' link={'/account'}><UserIcon/></IconButton>
+              <IconButton link={'/account'}><UserIcon/></IconButton>
             </div>
             <div>
-              <IconButton className='icon-button' link={'/cart'}><CartIcon/></IconButton>
+              <IconButton link={'/cart'}><CartIcon/></IconButton>
             </div>
           </div>
       </div>

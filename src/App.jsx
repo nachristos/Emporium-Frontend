@@ -24,7 +24,7 @@ function App() {
               <Routes>
                 <Route path={'/'} element={<Login redirect />}/>
                 <Route path={'/register'} element={<Signup />}/>
-                <Route path={'/home'} element={<Home />}/>
+                <Route path={'/home/:itemId?'} element={<Home />}/>
                 <Route path={'/account'} element={<UserContextProvider children={<Profile />} />}/>
                 <Route path={'/cart'} element={<UserContextProvider children={<Cart />} />}/>
               </Routes>
