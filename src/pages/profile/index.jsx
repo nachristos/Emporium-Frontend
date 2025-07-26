@@ -1,8 +1,6 @@
-import { ImageIcon } from "../../assets/icons/image-icon";
 import { Input } from "../../components/shared/input";
 import { Button } from "../../components/shared/button";
 import './index.css';
-import { UploadIcon } from "../../assets/icons/upload-icon";
 import { useMemo, useState } from "react";
 import { useMutate } from "../../hooks/use-mutate";
 import { useUserContext } from "../../hooks/use-user-context";
@@ -55,19 +53,11 @@ export const Profile = () => {
   }
   
   return (
-        <div className="profile scrollable container">
-          <div className="mb center">
-            <div className="border-pri user-icon-wrapper">
-              <ImageIcon className="user-icon-placeholder" />
-              <h1 className="pri strong">
-                UPLOAD IMAGE
-                <UploadIcon />
-              </h1>
-            </div>
-          </div>
+        <div className="profile scrollable container w-full">
           <div className="flex mb">
             <Input placeholder="First Name" value={firstName} onChange={setFirstName} />
-            <div className="mxs" />
+          </div>
+          <div className="flex mb">
             <Input placeholder="Last Name" value={lastName} onChange={setLastName} />
           </div>
           <div className="flex mb">
