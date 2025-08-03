@@ -1,0 +1,74 @@
+.cart {
+  position: fixed;
+  top: 0;
+  right: -340px;
+  width: 300px;
+  height: 110%;
+  margin-top: -20px;
+  margin-left: -8px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  background: linear-gradient(84deg, #515c6f9f 49%, #4c687f9f 50%);
+  box-shadow: -30px  -30px 50px #5d37e835 inset;
+  border: 2px solid;
+  border-image: 
+    linear-gradient(
+      to bottom, 
+      #a268a5b0,
+      #cf8bff 
+    ) 1 100%;
+  
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transition: right 0.3s ease-in-out;
+  z-index: 100;
+  padding: 30px 16px 0 18px;
+}
+
+.cart.open {
+  right: 0;
+}
+
+.cart .icon {
+  height: 40px;
+  width: 40px;
+  color: var(--text-color)
+}
+.cart .icon:hover {
+  color: var(--primary-color)
+}
+
+.cart .close {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.cart .icon-button {
+  padding-right: 0;
+}
+
+.cart h2 {
+  font-weight: 400;
+}
+
+.cart .active a {
+  color: var(--primary-color);
+}
+
+.cart .image {
+  height: 70px;
+  width: 70px;
+  border-radius: 6px;
+}
+
+.cart .item-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.cart h2 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

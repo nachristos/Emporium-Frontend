@@ -1,0 +1,21 @@
+
+.item-page .image {
+  width: 100vw;
+  max-width: 500px;
+  height: 100vw;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.item-page h2 {
+  color: var(--secondary-color);
+}
+
+.item-page p {
+  max-width: 350px;
+}
+
+.close .icon {
+  width: 60px;
+  height: 60px;
+}

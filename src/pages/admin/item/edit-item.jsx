@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Input } from "../../../components/shared/input";
 import { ImageIcon } from "../../../assets/icons/image-icon";
 import { UploadIcon } from "../../../assets/icons/upload-icon";
-import './index.css';
 import { useMutate } from "../../../hooks/use-mutate";
 import { Button } from "../../../components/shared/button";
+import './index.css';
 
 export const EditItem = ({ item, onClose }) => {
   const [name, setName] = useState(item.name);
@@ -30,7 +30,7 @@ export const EditItem = ({ item, onClose }) => {
       attributes,
       category,
       description,
-      picture: picture
+      ...( picture && { picture })
     })
   }
   
@@ -38,8 +38,8 @@ export const EditItem = ({ item, onClose }) => {
     <div className="w-full item-edit">
       <div className="mb center item-image">
         <div className="border-pri wrapper" onClick={() => document.querySelector('input[type="file"]').click()}>
-          {picture ? (
-            <img src={picture} />
+          {picture || item.imgURL ? (
+            <img src={picture || item.imgURL} />
           ) : (
             <>
               <ImageIcon className="placeholder" />
@@ -52,28 +52,30 @@ export const EditItem = ({ item, onClose }) => {
           <input type="file" hidden onChange={e => handleFileChange(e.target.files)} />
         </div>
       </div>
-      <div className="mb">
-        <Input placeholder={'Name'} onChange={setName} value={name}  />
-      </div>
-      <div className="mb">
-        <Input placeholder={'Attributes'} onChange={setAttributes} value={attributes}  />
-      </div>
-      <div className="mb">
-        <Input placeholder={'Category'} onChange={setCategory} value={category}  />
-      </div>
-      <div className="mb">
-        <Input placeholder={'Description'} onChange={setDescription} value={description}  />
-      </div>
-      <div className="flex between">
-        <div>
-          <Button variant="primary" className="w-full" onClick={handleUpdate}>
-            Save Changes
-          </Button>
+      <div className="p">
+        <div className="mb">
+          <Input placeholder={'Name'} onChange={setName} value={name}  />
         </div>
-        <div>
-          <Button variant="secondary" className="w-full" onClick={onClose}>
-            Cancel
-          </Button>
+        <div className="mb">
+          <Input placeholder={'Attributes'} onChange={setAttributes} value={attributes}  />
+        </div>
+        <div className="mb">
+          <Input placeholder={'Category'} onChange={setCategory} value={category}  />
+        </div>
+        <div className="mb">
+          <Input placeholder={'Description'} onChange={setDescription} value={description}  />
+        </div>
+        <div className="flex between">
+          <div>
+            <Button variant="primary" className="w-full" onClick={handleUpdate}>
+              Save Changes
+            </Button>
+          </div>
+          <div>
+            <Button variant="secondary" className="w-full" onClick={onClose}>
+              Cancel
+            </Button>
+          </div>
         </div>
       </div>
     </div>  

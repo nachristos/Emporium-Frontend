@@ -1,5 +1,4 @@
 import { useItems } from "../../hooks/use-items";
-import './index.css';
 import { ItemCard } from "./item-card";
 import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -33,6 +32,7 @@ export const Home = () => {
         <ItemDetails item={selectedItem} onClose={handleClose} />
       ) : (
         <div className="w-full wrap center">
+          <>stuff</>
           {data.map(item => (
             <ItemCard key={item._id} item={item} onClick={handleClick} />
           ))}

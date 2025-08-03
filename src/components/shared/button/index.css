@@ -49,6 +49,25 @@ button {
   color: #FFC1C1;
 }
 
+.tertiary {
+  border: 2px solid var(--cta-color);
+  background-color: transparent;
+  color: var(--cta-color);
+}
+.tertiary:focus {
+  outline: none;
+  border-color: #DEDEDE;
+}
+.tertiary:hover {
+  background-color: #DEDEDE;
+  color: #E94747;
+}
+.tertiary:disabled {
+  border: 2px solid #FCFCFC;
+  background-color: #FCFCFC;
+  color: #FFC1C1;
+}
+
 .regular {
   line-height: 32px;
   height: 36px;
@@ -57,4 +76,9 @@ button {
 .large {
   line-height: 44px;
   height: 48px;
+}
+
+.small {
+  line-height: 22px;
+  height: 26px;
 }

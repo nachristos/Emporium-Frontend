@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { SearchIcon } from '../../../assets/icons/search-icon';
 import { useItems } from '../../../hooks/use-items';
 import './index.css';
-import image from '/weapon.png';
+import placeHolderImg from '/weapon.png';
 
 export const Search = ({ ref, open, onBlur }) => {
   const { data } = useItems();
@@ -46,10 +46,10 @@ export const Search = ({ ref, open, onBlur }) => {
         { open && filteredItems?.map(i => (
           <div className='pt'>
             <button onClick={() => handleClick(i._id)}>
-              <img className="image" src={image} />
-              <h3 style={{ marginLeft: '12px'}}>
+              <img className="image" src={i.imgURL || placeHolderImg} />
+              <h2 className='body' style={{ marginLeft: '12px'}}>
                 {i.name}
-              </h3>
+              </h2>
             </button>
           </div>
         ))}

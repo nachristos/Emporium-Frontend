@@ -1,0 +1,26 @@
+.quantity button {
+  display: flex;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--text-color);
+}
+
+.quantity h5 {
+  font-size: 23px;
+  margin: auto;
+  line-height: 0px;
+  color: var(--cta-color);
+}
+
+.quantity .value {
+  width: 36px;
+  height: 26px;
+  margin-inline: 10px;
+  background-color: aliceblue;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
