@@ -1,6 +1,6 @@
 import './index.css';
 
-export const IconButton = ({ link, onClick, active, className, children }) => {
+export const IconButton = ({ link, onClick, active, className = '', children }) => {
   
   const action = link ? () => window.location.pathname = link : onClick;
   const activeState = active || window.location.pathname === link;

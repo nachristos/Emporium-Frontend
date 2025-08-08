@@ -1,0 +1,32 @@
+
+.item-image .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  max-width: 500px;
+  height: 100vw;
+  max-height: 500px;
+  cursor: pointer;
+}
+
+.item-image .placeholder {
+  width: 40%;
+  height: 40%;
+  margin-top: 18px;
+}
+
+.item-image img {
+  width: 100vw;
+  max-width: 500px;
+  height: 100vw;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item-image .icon {
+  height: 20px;
+  margin-bottom: -2px;
+}

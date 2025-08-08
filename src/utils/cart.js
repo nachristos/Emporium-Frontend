@@ -1,19 +1,16 @@
+const KEY = 'nl-cart';
 
-export const addItems = (id, count) => {
-  const existing = Number(localStorage.getItem(id) || 0);
-  localStorage.setItem(id, Number(existing + count));
-}
-
-export const addItem = (id) => {
-  const existing = Number(localStorage.getItem(id) || 0);
-  localStorage.setItem(id, Number(existing + 1));
-}
-
-export const removeItem = (id) => {
-  const existing = Number(localStorage.getItem(id) || 0);
-  localStorage.setItem(id, Number(existing - 1));
+export const updateItem = (id, count) => {
+  const items = JSON.parse(localStorage.getItem(KEY) || '{}');
+  const newItems = { ...items, [id]: count}
+  localStorage.setItem(KEY, JSON.stringify(newItems));
 }
 
 export const getItemCount = (id) => {
-  return Number(localStorage.getItem(id) || 0);
+  const items = JSON.parse(localStorage.getItem(KEY) || '{}');
+  return Number(items[id] || 0);
+}
+
+export const getItems = () => {
+  return JSON.parse(localStorage.getItem(KEY) || '{}');
 }

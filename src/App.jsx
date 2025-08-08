@@ -9,6 +9,8 @@ import { AuthContextProvider } from './context/auth-context/auth-context-provide
 import { UserContextProvider } from "./context/user-context/user-context-provider.jsx"
 import { Signup } from './pages/signup/index.jsx'
 import { Login } from './pages/login/index.jsx'
+import { CartContextProvider } from './context/cart-context.jsx/cart-context-provider.jsx'
+import { Shop } from './pages/shop/index.jsx'
 
 
 const queryClient = new QueryClient()
@@ -18,18 +20,21 @@ function App() {
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <AuthContextProvider>
-          <Navigation />
-          <div className="page">
-              <Routes>
-                <Route path={'/'} element={<Login redirect />}/>
-                <Route path={'/register'} element={<Signup />}/>
-                <Route path={'/home/:itemId?'} element={<Home />}/>
-                <Route path={'/account'} element={<UserContextProvider children={<Profile />} />}/>
-                <Route path={'/cart'} element={<UserContextProvider children={<Cart />} />}/>
-              </Routes>
-          </div>
-        </AuthContextProvider>
+        <CartContextProvider>
+          <AuthContextProvider>
+            <Navigation />
+            <div className="page">
+                <Routes>
+                  <Route path={'/'} element={<Login redirect />}/>
+                  <Route path={'/register'} element={<Signup />}/>
+                  <Route path={'/home/:itemId?'} element={<Home />}/>
+                  <Route path={'/shop/:itemId?'} element={<Shop />}/>
+                  <Route path={'/account'} element={<UserContextProvider children={<Profile />} />}/>
+                  <Route path={'/cart'} element={<UserContextProvider children={<Cart />} />}/>
+                </Routes>
+            </div>
+          </AuthContextProvider>
+        </CartContextProvider>
       </QueryClientProvider>
     </BrowserRouter>
   )

@@ -5,34 +5,52 @@ import { IconButton } from '../shared/icon-button';
 import logo from '../../assets/logo-small.png';
 import './index.css';
 import { useAuthContext } from '../../hooks/use-auth-context';
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { CloseIcon } from '../../assets/icons/close-icon';
 import { SearchIcon } from '../../assets/icons/search-icon';
 import { Search } from './search';
-
-const NavButton = ({ name, onClick, active }) => {
-  return (
-    <div className={`mb ${active && 'active'}`} onClick={onClick}>
-      <a><h2>{name}</h2></a>
-    </div>
-  )
-}
+import { NavButton } from './nav-button';
+import { useCartContext } from '../../hooks/use-cart-context';
+import { ChevDown } from '../../assets/icons/chev-down';
+import { clearSearch, setSearch } from '../../utils/searchParams';
+import { useItems } from '../../hooks/use-items';
 
 export const Navigation = () => {
-  const { setAuth } = useAuthContext();
-  const [menuOpen, setMenuOpen] = useState();
+  const { token, setAuth } = useAuthContext();
+  const { cart } = useCartContext();
+  const { open } = useCartContext();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [shopAll, setShopAll] = useState(false)
   const searchRef = useRef(null);
+  const ref = useRef(null);
+  const { data } = useItems();
+  
+  const categories = useMemo(() => {
+    const set = new Set();
+    data?.map(d => set.add(d.category));
+    return [...set];
+  },[data])
+  
+  const totalItems = useMemo(() => {
+    return Object.values(cart).reduce((acc, item) => acc + item, 0);
+  }, [cart]);
   
   const [searchOpen, setSearchOpen] = useState(false);
   
-    const path = window.location.pathname;
-    
-    const setPath = (pathname) => {
-      window.location.pathname = pathname
-    }
+  const path = window.location.pathname;
   
-  const handleMenuClick = () => {
-    setMenuOpen(!menuOpen);
+  const setPath = (pathname, search, value) => {
+    if(search) {
+      setSearch(search, value)
+    } else {
+      clearSearch();
+    }
+    window.location.pathname = pathname;
+  }
+  
+  const handleOpen = () => {
+    setMenuOpen(true);
+    ref.current.focus();
   }
   
   const handleSignOut = () => {
@@ -45,43 +63,62 @@ export const Navigation = () => {
   }
   
   return (
+    <>
       <div className="nav" id={'nav'}>
-
-          <Search ref={searchRef} open={searchOpen} onBlur={() => setSearchOpen(false)} />
-        
-          <div className='flex'>
-            <IconButton onClick={handleMenuClick}><MenuIcon/></IconButton>
-            <div>
-              <div className={`drawer ${menuOpen ? 'open' : ''}`}>
-                <div className='close'>
-                  <IconButton onClick={handleMenuClick}><CloseIcon/></IconButton>
-                </div>
-                <div className='items flex-col text center between'>
-                  <div className='w-full p'>
-                    <NavButton name={'Home'} active={path === '/home'} onClick={() => setPath('/home')}/>
-                    <NavButton name={'About'} active={path === '/about'}/>
-                    <div style={{ border: '1px solid white', marginBottom: 20 }} />
-                  </div>
-                  <NavButton name={'Sign Out'} onClick={handleSignOut}/>
-                </div>
-              </div>
-            </div>
-            
-            <div className='mxs'>
-              <IconButton className='icon-button' active={searchOpen} onClick={handleSearchClick}><SearchIcon /></IconButton>
-            </div>
+        <Search ref={searchRef} open={searchOpen} onBlur={() => setSearchOpen(false)} />
+        <div className='flex'>
+          <IconButton onClick={handleOpen}><MenuIcon/></IconButton>
+          
+          <div className='mxs'>
+            <IconButton className='icon-button' active={searchOpen} onClick={handleSearchClick}><SearchIcon /></IconButton>
           </div>
-          <IconButton link={'/'}>
-            <img className='logo' src={logo} alt='logo' />
-          </IconButton>
-          <div className='flex'>
-            <div className='mx'>
-              <IconButton link={'/account'}><UserIcon/></IconButton>
-            </div>
-            <div>
-              <IconButton link={'/cart'}><CartIcon/></IconButton>
-            </div>
+        </div>
+        <IconButton link={'/'}>
+          <img className='logo' src={logo} alt='logo' />
+        </IconButton>
+        <div className='flex'>
+          <div className='mx'>
+            <IconButton link={'/account'}><UserIcon/></IconButton>
           </div>
+          <div>
+            <div className='notification'>{totalItems}</div>
+            <IconButton  onClick={open}><CartIcon/></IconButton>
+          </div>
+        </div>
       </div>
+      <div>
+        <div ref={ref} onMouseLeave={() => setMenuOpen(false)} className={`drawer ${menuOpen ? 'open' : ''}`}>
+          <div className='close'>
+            <IconButton onClick={() => setMenuOpen(false)}><CloseIcon/></IconButton>
+          </div>
+          <div className='items flex-col text center between'>
+            <div className='w-full p'>
+              <NavButton className='mb' name={'Home'} active={path === '/home'} onClick={() => setPath('/home')}/>
+              <NavButton className='mb' name={'About'} active={path === '/about'}/>
+              <div className='divider mb' />
+              <NavButton element={
+                <div className='shop-all'>
+                  <h2>
+                    {'Shop All'}
+                  </h2>
+                  <ChevDown active={shopAll} />
+                </div>
+                } onClick={() => setShopAll(!shopAll)}/>
+              {shopAll && (
+                <>
+                <NavButton className='mys' element={<h4>All Items</h4>} onClick={() => setPath('/shop')}/>
+                  {categories.map(c => (
+                    <NavButton className='mys' element={<h4>{c}</h4>} onClick={() => setPath('/shop', 'category', c)}/>
+                  ))}
+                </>
+              )}
+            </div>
+            {token &&
+              <NavButton name={'Sign Out'} onClick={handleSignOut}/>
+            } 
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
