@@ -1,0 +1,24 @@
+
+.listing-card {
+  max-width: 160px;
+  margin: 12px;
+}
+
+.listing-card img {
+  width: 156px;
+  height: 190px;
+  max-width: 160px;
+  object-fit: cover;
+  border-top-right-radius: 18px;
+  border-top-left-radius: 18px;
+  border: 2px solid transparent;
+}
+
+.listing-card h2 {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  max-width: 160px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+}
