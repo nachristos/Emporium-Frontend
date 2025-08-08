@@ -5,26 +5,42 @@ import { IconButton } from '../shared/icon-button';
 import logo from '../../assets/logo-small.png';
 import './index.css';
 import { useAuthContext } from '../../hooks/use-auth-context';
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { CloseIcon } from '../../assets/icons/close-icon';
 import { SearchIcon } from '../../assets/icons/search-icon';
 import { Search } from './search';
 import { NavButton } from './nav-button';
 import { useCartContext } from '../../hooks/use-cart-context';
+import { ChevDown } from '../../assets/icons/chev-down';
+import { clearSearch, setSearch } from '../../utils/searchParams';
+import { useItems } from '../../hooks/use-items';
 
 export const Navigation = () => {
-  const { setAuth } = useAuthContext();
+  const { token, setAuth } = useAuthContext();
   const { open } = useCartContext();
-  const [menuOpen, setMenuOpen] = useState();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [shopAll, setShopAll] = useState(false)
   const searchRef = useRef(null);
   const ref = useRef(null);
+  const { data } = useItems();
+  
+  const categories = useMemo(() => {
+    const set = new Set();
+    data?.map(d => set.add(d.category));
+    return [...set];
+  },[data])
   
   const [searchOpen, setSearchOpen] = useState(false);
   
   const path = window.location.pathname;
   
-  const setPath = (pathname) => {
-    window.location.pathname = pathname
+  const setPath = (pathname, search, value) => {
+    if(search) {
+      setSearch(search, value)
+    } else {
+      clearSearch();
+    }
+    window.location.pathname = pathname;
   }
   
   const handleOpen = () => {
@@ -71,11 +87,29 @@ export const Navigation = () => {
           </div>
           <div className='items flex-col text center between'>
             <div className='w-full p'>
-              <NavButton name={'Home'} active={path === '/home'} onClick={() => setPath('/home')}/>
-              <NavButton name={'About'} active={path === '/about'}/>
-              <div style={{ border: '1px solid white', marginBottom: 20 }} />
+              <NavButton className='mb' name={'Home'} active={path === '/home'} onClick={() => setPath('/home')}/>
+              <NavButton className='mb' name={'About'} active={path === '/about'}/>
+              <div className='divider mb' />
+              <NavButton element={
+                <div className='shop-all'>
+                  <h2>
+                    {'Shop All'}
+                  </h2>
+                  <ChevDown active={shopAll} />
+                </div>
+                } onClick={() => setShopAll(!shopAll)}/>
+              {shopAll && (
+                <>
+                <NavButton className='mys' element={<h4>All Items</h4>} onClick={() => setPath('/shop')}/>
+                  {categories.map(c => (
+                    <NavButton className='mys' element={<h4>{c}</h4>} onClick={() => setPath('/shop', 'category', c)}/>
+                  ))}
+                </>
+              )}
             </div>
-            <NavButton name={'Sign Out'} onClick={handleSignOut}/>
+            {token &&
+              <NavButton name={'Sign Out'} onClick={handleSignOut}/>
+            } 
           </div>
         </div>
       </div>

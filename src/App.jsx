@@ -10,6 +10,7 @@ import { UserContextProvider } from "./context/user-context/user-context-provide
 import { Signup } from './pages/signup/index.jsx'
 import { Login } from './pages/login/index.jsx'
 import { CartContextProvider } from './context/cart-context.jsx/cart-context-provider.jsx'
+import { Shop } from './pages/shop/index.jsx'
 
 
 const queryClient = new QueryClient()
@@ -27,6 +28,7 @@ function App() {
                   <Route path={'/'} element={<Login redirect />}/>
                   <Route path={'/register'} element={<Signup />}/>
                   <Route path={'/home/:itemId?'} element={<Home />}/>
+                  <Route path={'/shop/:itemId?'} element={<Shop />}/>
                   <Route path={'/account'} element={<UserContextProvider children={<Profile />} />}/>
                   <Route path={'/cart'} element={<UserContextProvider children={<Cart />} />}/>
                 </Routes>

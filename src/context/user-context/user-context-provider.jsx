@@ -2,6 +2,7 @@ import { useUser } from "../../hooks/use-user";
 import { Login } from "../../pages/login";
 import { UserContext } from ".";
 import { useAuthContext } from "../../hooks/use-auth-context";
+import { Loader } from "../../components/shared/loader";
 
 export const UserContextProvider = ({ children}) => {
   const { token } = useAuthContext();
@@ -12,7 +13,7 @@ export const UserContextProvider = ({ children}) => {
   }
 
   if (token && isLoading) {
-    return <div>Loading user context...</div>;
+    return  <Loader />;
   }
   
   if (error) {

@@ -1,0 +1,17 @@
+.filter {
+  padding-left: 4px;
+  border: 2px solid #F5F5F5;
+  border-radius: 9px;
+  background-color: transparent;
+  color: #F5F5F5;
+  font-size: 16px;
+  height: 36px;
+  display: flex;
+  width: 100%;
+  max-width: 340px;
+  box-sizing: border-box;
+}
+.filter:focus {
+  outline: none;
+  border-color: #FF4C4C;
+}

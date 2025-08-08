@@ -53,7 +53,7 @@ export const Profile = () => {
   }
   
   return (
-        <div className="profile scrollable container w-full">
+        <div className="profile scrollable container w-full h-full middle">
           <div className="flex mb">
             <Input placeholder="First Name" value={firstName} onChange={setFirstName} />
           </div>

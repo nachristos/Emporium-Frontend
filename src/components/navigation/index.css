@@ -65,10 +65,9 @@
 }
 
 .drawer .icon {
-  height: 40px;
-  width: 40px;
   color: var(--text-color)
 }
+
 .drawer .icon:hover {
   color: var(--primary-color)
 }
@@ -89,4 +88,14 @@
 
 .drawer .active a {
   color: var(--primary-color);
+}
+
+.shop-all {
+  display: flex;
+  justify-content: center;
+}
+
+.shop-all .chevron {
+  margin-left: 8px;
+  margin-top: -2px;
 }
