@@ -17,6 +17,7 @@ import { useItems } from '../../hooks/use-items';
 
 export const Navigation = () => {
   const { token, setAuth } = useAuthContext();
+  const { cart } = useCartContext();
   const { open } = useCartContext();
   const [menuOpen, setMenuOpen] = useState(false);
   const [shopAll, setShopAll] = useState(false)
@@ -29,6 +30,10 @@ export const Navigation = () => {
     data?.map(d => set.add(d.category));
     return [...set];
   },[data])
+  
+  const totalItems = useMemo(() => {
+    return Object.values(cart).reduce((acc, item) => acc + item, 0);
+  }, [cart]);
   
   const [searchOpen, setSearchOpen] = useState(false);
   
@@ -76,6 +81,7 @@ export const Navigation = () => {
             <IconButton link={'/account'}><UserIcon/></IconButton>
           </div>
           <div>
+            <div className='notification'>{totalItems}</div>
             <IconButton  onClick={open}><CartIcon/></IconButton>
           </div>
         </div>

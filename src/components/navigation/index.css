@@ -99,3 +99,19 @@
   margin-left: 8px;
   margin-top: -2px;
 }
+
+.notification {
+  position: absolute;
+  top: 28px;
+  right: 40px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
