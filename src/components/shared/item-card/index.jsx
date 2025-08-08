@@ -23,9 +23,7 @@ export const ItemCard = ({ item, onClick }) => {
           </h2>
         </CardBase>
       </a>
-      <div className="w-full flex end pb">
-        <button className={'add-button'} onClick={handleAddToCart}><h3>+</h3></button>
-      </div>
+      <button className={'add-button'} onClick={handleAddToCart}><h3>+</h3></button>
     </div>
   )
 }

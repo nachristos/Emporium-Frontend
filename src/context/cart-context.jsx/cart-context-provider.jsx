@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import { CartContext } from ".";
-import { getItems, updateItem } from "../../utils/cart";
+import { clearCart, getItems, updateItem } from "../../utils/cart";
 import { useItems } from "../../hooks/use-items";
 import { Cart } from "../../components/cart";
 
@@ -29,13 +29,18 @@ export const CartContextProvider = ({ children }) => {
     updateItem(id, count);
   }
   
+  const resetCart = () => {
+    setCart({});
+    clearCart();
+  }
+  
   const items = useMemo(() => {
     const cartItems = Object.entries(cart);
     return cartItems.filter(([,v]) => !!v).map(([key, value]) => ({ item: itemsMap[key], quantity: value }))
   },[cart, itemsMap])
 
   return (
-    <CartContext.Provider value={{ open: handleOpen, updateItem: handleSetQuantity, cart }}>
+    <CartContext.Provider value={{ open: handleOpen, updateItem: handleSetQuantity, clearCart: resetCart, cart }}>
         <Cart ref={ref} open={open} onClose={() => setOpen(false)} items={items}/>
         {children}
     </CartContext.Provider>

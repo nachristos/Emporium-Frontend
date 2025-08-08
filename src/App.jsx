@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { Navigation } from './components/navigation/index.jsx'
 import { Profile } from './pages/profile/index.jsx'
-import { Cart } from './pages/cart/index.jsx'
 import { Home } from './pages/home/index.jsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AuthContextProvider } from './context/auth-context/auth-context-provider.jsx'
@@ -30,7 +29,6 @@ function App() {
                   <Route path={'/home/:itemId?'} element={<Home />}/>
                   <Route path={'/shop/:itemId?'} element={<Shop />}/>
                   <Route path={'/account'} element={<UserContextProvider children={<Profile />} />}/>
-                  <Route path={'/cart'} element={<UserContextProvider children={<Cart />} />}/>
                 </Routes>
             </div>
           </AuthContextProvider>

@@ -14,3 +14,7 @@ export const getItemCount = (id) => {
 export const getItems = () => {
   return JSON.parse(localStorage.getItem(KEY) || '{}');
 }
+
+export const clearCart = () => {
+  localStorage.removeItem(KEY);
+}

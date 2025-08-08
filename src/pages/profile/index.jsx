@@ -28,7 +28,7 @@ export const Profile = () => {
   }, [firstName, lastName, alias, email, newPassword, confirmPassword]);
   
   const handleUpdate = () => {
-    update.mutate({
+    update({
       firstName,
       lastName,
       alias,

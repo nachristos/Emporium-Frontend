@@ -81,7 +81,7 @@ export const Navigation = () => {
             <IconButton link={'/account'}><UserIcon/></IconButton>
           </div>
           <div>
-            <div className='notification'>{totalItems}</div>
+            { !!totalItems && <div className='notification'>{totalItems}</div>}
             <IconButton  onClick={open}><CartIcon/></IconButton>
           </div>
         </div>

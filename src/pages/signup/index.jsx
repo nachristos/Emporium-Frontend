@@ -28,7 +28,7 @@ export const Signup = () => {
   }, [firstName, lastName, alias, email, newPassword, confirmPassword]);
   
   const handleCreate = () => {
-    create.mutate({
+    create({
       firstName,
       lastName,
       alias,

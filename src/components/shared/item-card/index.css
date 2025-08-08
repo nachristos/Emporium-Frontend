@@ -25,11 +25,12 @@
 
 .add-button {
   position: relative;
+  margin-bottom: -32px;
   bottom: 36px;
+  left: 124px;
   border-radius: 50%;
   border: none;
   width: 28px;
-  margin-bottom: 10px;
   margin-right: 10px;
   padding: 0;
   line-height: 20px;
