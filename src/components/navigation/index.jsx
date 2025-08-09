@@ -20,7 +20,7 @@ export const Navigation = () => {
   const { cart } = useCartContext();
   const { open } = useCartContext();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [shopAll, setShopAll] = useState(false)
+  const [shopAll, setShopAll] = useState(true)
   const searchRef = useRef(null);
   const ref = useRef(null);
   const { data } = useItems();

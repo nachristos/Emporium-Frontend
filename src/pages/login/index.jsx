@@ -59,12 +59,8 @@ export const Login = ({ redirect }) => {
               Enter you email and password
             </h5>
             <div className="w-full p">
-              <div className="w-full mb">
               <Input type="email" placeholder="Email" onChange={setEmail} />
-              </div>
-              <div className="w-full">
-                <Input type="password" placeholder="Password" onChange={setPassword} />
-              </div>
+              <Input type="password" placeholder="Password" onChange={setPassword} />
             </div>
             <div>
               <a href="/forgot-password" className="w-full mb text">

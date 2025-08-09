@@ -58,14 +58,8 @@ export const EditItem = ({ item, onClose }) => {
       <div className="p">
         <div className="mb">
           <Input placeholder={'Name'} onChange={setName} value={name}  />
-        </div>
-        <div className="mb">
           <Input placeholder={'Attributes'} onChange={setAttributes} value={attributes}  />
-        </div>
-        <div className="mb">
           <Input placeholder={'Category'} onChange={setCategory} value={category}  />
-        </div>
-        <div className="mb">
           <Input placeholder={'Description'} onChange={setDescription} value={description}  />
         </div>
         <div className="flex between">

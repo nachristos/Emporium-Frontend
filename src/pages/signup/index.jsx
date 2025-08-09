@@ -57,18 +57,18 @@ export const Signup = () => {
           <h5 className="body mb">
             Enter your account info
           </h5>
-          <div className="flex mb">
+          <div className="flex">
             <Input placeholder="First Name" value={firstName} onChange={setFirstName} />
             <div className="mxs" />
             <Input placeholder="Last Name" value={lastName} onChange={setLastName} />
           </div>
-          <div className="w-full mb">
+          <div className="w-full">
             <Input placeholder="Alias" value={alias} onChange={setAlias} />
           </div>
-          <div className="w-full mb">
+          <div className="w-full">
             <Input placeholder="Email" value={email} onChange={setEmail} />
           </div>
-          <div className="flex w-full mb">
+          <div className="flex w-full">
             <Input type="password" placeholder="Password" value={password} onChange={setPassword} />
           </div>
           <div className="flex w-full mb">

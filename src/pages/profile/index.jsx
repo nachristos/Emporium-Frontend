@@ -54,22 +54,12 @@ export const Profile = () => {
   
   return (
         <div className="profile scrollable container w-full h-full middle">
-          <div className="flex mb">
+          <div className="mb">
             <Input placeholder="First Name" value={firstName} onChange={setFirstName} />
-          </div>
-          <div className="flex mb">
             <Input placeholder="Last Name" value={lastName} onChange={setLastName} />
-          </div>
-          <div className="flex mb">
             <Input placeholder="Alias" value={alias} onChange={setAlias} />
-          </div>
-          <div className="flex mb">
             <Input placeholder="Email" value={email} onChange={setEmail} />
-          </div>
-          <div className="flex mb">
             <Input type="password" placeholder="New Password" value={password} onChange={setPassword} />
-          </div>
-          <div className="flex mb">
             <Input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={setConfirmPassword} />
           </div>
           <div className="flex between">

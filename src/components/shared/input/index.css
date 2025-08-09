@@ -14,3 +14,15 @@
   outline: none;
   border-color: #FF4C4C;
 }
+
+.input-container h4 {
+  color: var(--text-color);
+  font-size: 14px;
+  margin-bottom: 8px;
+  height: 14px;
+}
+
+.input-container {
+  text-align: start;
+  margin-bottom: 10px;
+}
