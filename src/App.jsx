@@ -3,7 +3,6 @@ import './App.css'
 import { Navigation } from './components/navigation/index.jsx'
 import { Profile } from './pages/profile/index.jsx'
 import { Home } from './pages/home/index.jsx'
-import { Listing } from './pages/listing/index.jsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AuthContextProvider } from './context/auth-context/auth-context-provider.jsx'
 import { UserContextProvider } from "./context/user-context/user-context-provider.jsx"
