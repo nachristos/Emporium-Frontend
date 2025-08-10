@@ -1,9 +1,11 @@
 import { useItems } from "../../hooks/use-items";
 import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Listing } from "../Listing";
 import { Loader } from "../../components/shared/loader";
 import { ItemCard } from "../../components/shared/item-card";
 import { ItemDetails } from "../../components/shared/item-details";
+
 
 export const Home = () => {
   const { itemId } = useParams();
@@ -32,12 +34,16 @@ export const Home = () => {
       { selectedItemId ? (
         <ItemDetails item={selectedItem} onClose={handleClose} />
       ) : (
-        <div className="w-full wrap center">
-          {data.map(item => (
-            <ItemCard key={item._id} item={item} onClick={handleClick} />
-          ))}
-        </div>
+        <>
+          <Listing/>
+          <div className="w-full wrap center">
+            {data.map(item => (
+              <ItemCard key={item._id} item={item} onClick={handleClick} />
+            ))}
+          </div>
+        </>
       )}
     </div>
+
   );
 }
