@@ -6,17 +6,21 @@ import { ListingDetails } from "./listing-details";
 import ImageCarousel from "../../components/shared/image-carousel";
 import './index.css'
 
+// Export----------------------------------------------------------------------------------------------------
 export const Listing = () => {
+  // Params
   const { listingId } = useParams();
   const { data, isLoading } = useListings();
   const [selectedListingId, setSelectedListingId] = useState(listingId || undefined)
   
   const selectedListing = useMemo(() => data?.find(d => d._id === selectedListingId), [data, selectedListingId])  
   
+  // Loading message
   if (!data && isLoading) {
     return <div>Loading content...</div>;
   }
   
+  // Handlers
   const handleClick = (id) => {
     setSelectedListingId(id)
     history.replaceState(null, id, `/listing/${id}`)
@@ -27,7 +31,7 @@ export const Listing = () => {
     history.replaceState(null, 'listing', `/listing/`)
   }
 
-  // Listings Image slides
+  // Listings (Ads) Image slides
   const slides = [
     //{imgURL: selectedListing.imgURL, title: selectedListing.name}, 
     {imgURL: "https://storage.googleapis.com/emporium-images/68877a48a1d44ac06fc50277_01.png", 
@@ -41,6 +45,7 @@ export const Listing = () => {
     }
   ]
   
+  // Display
   return (
     <div className= 'img-container'>
       { selectedListingId ? (

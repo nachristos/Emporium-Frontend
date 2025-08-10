@@ -5,14 +5,17 @@ import './index.css'
 
 
 const ImageCarousel = ({slides}) => {
+    // Img index
     const [currentIndex, setCurrentIndex] = useState(0)
-    // Arrow Functions
+
+    // ----------Arrow Functions--------------
+    // Left Arrow
     const previous = () => {
         const isFirstSlide = currentIndex === 0
         const newIndex = isFirstSlide? slides.length - 1 : currentIndex - 1
         setCurrentIndex(newIndex)
     }
-
+    // Right Arrow
     const next = () => {
         const isLastSlide = currentIndex === slides.length - 1
         const newIndex = isLastSlide? 0 : currentIndex + 1
@@ -24,6 +27,7 @@ const ImageCarousel = ({slides}) => {
         setCurrentIndex(slideIndex)
     }
 
+    // Display
     return (
         <div className='carousel-wrapper' >
             <div className="left-arrow" onClick={previous}>&#8678;</div>
@@ -41,4 +45,5 @@ const ImageCarousel = ({slides}) => {
     )
 }
 
+// Export------------------------------------------------------------------------------------------------------
 export default ImageCarousel
