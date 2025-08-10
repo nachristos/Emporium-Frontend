@@ -5,7 +5,7 @@ import { EditIcon } from "../../../assets/icons/edit-icon";
 import { CloseIcon } from "../../../assets/icons/close-icon";
 import { ChevDown } from "../../../assets/icons/chev-down";
 import { Button } from "../../../components/shared/button";
-import { EditListing } from '../../admin/item/edit-listing';
+import { EditListing } from '../../admin/listing/edit-listing';
 import { Quantity } from "../../../components/shared/quantity";
 import { useCartContext } from "../../../hooks/use-cart-context";
 import './index.css';
