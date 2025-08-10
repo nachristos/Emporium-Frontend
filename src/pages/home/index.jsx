@@ -1,9 +1,11 @@
 import { useItems } from "../../hooks/use-items";
-import { ItemCard } from "./item-card";
 import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import { ItemDetails } from "./item-details";
 import { Listing } from "../Listing";
+import { Loader } from "../../components/shared/loader";
+import { ItemCard } from "../../components/shared/item-card";
+import { ItemDetails } from "../../components/shared/item-details";
+
 
 export const Home = () => {
   const { itemId } = useParams();
@@ -14,7 +16,7 @@ export const Home = () => {
   const selectedItem = useMemo(() => data?.find(d => d._id === selectedItemId), [data, selectedItemId])  
   
   if (!data && isLoading) {
-    return <div>Loading user context...</div>;
+    return  <Loader />;
   }
   
   const handleClick = (id) => {

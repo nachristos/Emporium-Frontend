@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { Navigation } from './components/navigation/index.jsx'
 import { Profile } from './pages/profile/index.jsx'
-import { Cart } from './pages/cart/index.jsx'
 import { Home } from './pages/home/index.jsx'
 import { Listing } from './pages/listing/index.jsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -11,6 +10,7 @@ import { UserContextProvider } from "./context/user-context/user-context-provide
 import { Signup } from './pages/signup/index.jsx'
 import { Login } from './pages/login/index.jsx'
 import { CartContextProvider } from './context/cart-context.jsx/cart-context-provider.jsx'
+import { Shop } from './pages/shop/index.jsx'
 
 
 const queryClient = new QueryClient()
@@ -28,9 +28,8 @@ function App() {
                   <Route path={'/'} element={<Login redirect />}/>
                   <Route path={'/register'} element={<Signup />}/>
                   <Route path={'/home/:itemId?'} element={<Home />}/>
-                  <Route path={'/listing/:listingId?'} element={<Listing />}/>
+                  <Route path={'/shop/:itemId?'} element={<Shop />}/>
                   <Route path={'/account'} element={<UserContextProvider children={<Profile />} />}/>
-                  <Route path={'/cart'} element={<UserContextProvider children={<Cart />} />}/>
                 </Routes>
             </div>
           </AuthContextProvider>

@@ -6,9 +6,7 @@ export const useItems = () => {
   const { token } = useAuthContext()
   
   return useQuery({
-    
     queryKey: ['items'],
-    
     queryFn: async () => {
       const resp = await get(`/item`, token)
       if (!resp) {

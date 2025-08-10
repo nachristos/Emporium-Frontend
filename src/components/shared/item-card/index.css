@@ -15,10 +15,25 @@
 }
 
 .item-card h2 {
-  height: 90px;
+  height: 80px;
   display: flex;
   align-items: center;
   max-width: 160px;
   overflow: hidden;
   overflow-wrap: break-word;
+}
+
+.add-button {
+  position: relative;
+  margin-bottom: -32px;
+  bottom: 36px;
+  left: 124px;
+  border-radius: 50%;
+  border: none;
+  width: 28px;
+  margin-right: 10px;
+  padding: 0;
+  line-height: 20px;
+  background-color: var(--text-color);
+  color: var(--cta-color);
 }

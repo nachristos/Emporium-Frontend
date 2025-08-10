@@ -5,6 +5,7 @@ import { UploadIcon } from "../../../assets/icons/upload-icon";
 import { useMutate } from "../../../hooks/use-mutate";
 import { Button } from "../../../components/shared/button";
 import './index.css';
+import { useQueryClient } from "@tanstack/react-query";
 
 export const EditItem = ({ item, onClose }) => {
   const [name, setName] = useState(item.name);
@@ -12,8 +13,9 @@ export const EditItem = ({ item, onClose }) => {
   const [category, setCategory] = useState(item.category);
   const [description, setDescription] = useState(item.description);
   const [picture, setPicture] = useState(null);
+  const queryClient = useQueryClient();
   
-  const { update } = useMutate(`/item/${item._id}`);
+  const { update } = useMutate(`/item/${item._id}`, () => queryClient.invalidateQueries(['items']));
   
   const handleFileChange = async (fileList) => {
     if (fileList) {
@@ -24,7 +26,7 @@ export const EditItem = ({ item, onClose }) => {
   };
   
   const handleUpdate = () => {
-    update.mutate({
+    update({
       ...item,
       name,
       attributes,
@@ -32,6 +34,7 @@ export const EditItem = ({ item, onClose }) => {
       description,
       ...( picture && { picture })
     })
+    onClose();
   }
   
   return (
@@ -55,14 +58,8 @@ export const EditItem = ({ item, onClose }) => {
       <div className="p">
         <div className="mb">
           <Input placeholder={'Name'} onChange={setName} value={name}  />
-        </div>
-        <div className="mb">
           <Input placeholder={'Attributes'} onChange={setAttributes} value={attributes}  />
-        </div>
-        <div className="mb">
           <Input placeholder={'Category'} onChange={setCategory} value={category}  />
-        </div>
-        <div className="mb">
           <Input placeholder={'Description'} onChange={setDescription} value={description}  />
         </div>
         <div className="flex between">

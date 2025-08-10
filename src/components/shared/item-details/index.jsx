@@ -1,17 +1,17 @@
 import { useState } from "react";
 import placeholderImg from '/weapon.png';
 import { IconButton } from "../../../components/shared/icon-button";
-import { EditIcon } from "../../../assets/icons/edit-icon";
 import { CloseIcon } from "../../../assets/icons/close-icon";
 import { ChevDown } from "../../../assets/icons/chev-down";
 import { Button } from "../../../components/shared/button";
-import { EditItem } from '../../admin/item/edit-item';
 import { Quantity } from "../../../components/shared/quantity";
 import { useCartContext } from "../../../hooks/use-cart-context";
 import './index.css';
+import { EditItem } from "../../../pages/admin/item/edit-item";
+import { EditIcon } from "../../../assets/icons/edit-icon";
 
 export const ItemDetails = ({ item, onClose }) => {
-  const { updateItem, open } = useCartContext();
+  const { updateItem, open, cart } = useCartContext();
   const [description, setDescription] = useState(false);
   const [details, setDetails] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -23,7 +23,7 @@ export const ItemDetails = ({ item, onClose }) => {
   }
     
   const handleAddToCart = () => {
-    updateItem(item._id, quantity)
+    updateItem(item._id, (cart[item._id] || 0) + quantity)
     open();
   }
   
@@ -42,9 +42,9 @@ export const ItemDetails = ({ item, onClose }) => {
               <EditIcon />
             </IconButton>
           </div>
-            <div className="w-full item-page">
+            <div className="w-full flex wrap middle item-page">
               <img className="image" src={item.imgURL || placeholderImg} /> 
-              <div>
+              <div className="info">
                 <div className="p">
                   <div className="mb">
                     <h2>
@@ -66,9 +66,8 @@ export const ItemDetails = ({ item, onClose }) => {
                     <Button onClick={handleAddToCart} variant={'primary'} size="large" >Add to cart</Button>
                   </div>
                 </div>
-                <div className="divider" />
                 <div className="text px">
-                  <div className="between pt">
+                  <div className="between pt divider">
                     <h3 className="heading" style={{ textwrap: 'balance'}}>
                       Product specifications
                     </h3>
