@@ -4,7 +4,7 @@ import './index.css'
 
 
 
-const ImageCarousel = ({slides}) => {
+const ImageCarousel = ({slides, onClick}) => {
     // Img index
     const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -27,18 +27,25 @@ const ImageCarousel = ({slides}) => {
         setCurrentIndex(slideIndex)
     }
 
+    const handleClick = () => {
+        onClick(slides[currentIndex].id)
+        
+    }
+
     // Display
     return (
-        <div className='carousel-wrapper' >
+        <div className='carousel-wrapper w-full p' >
             <div className="left-arrow" onClick={previous}>&#8678;</div>
             <div className="right-arrow" onClick={next}>&#8680;</div>
             
-            <div className='carousel-img' style = {{backgroundImage: `url(${slides[currentIndex].imgURL})`}}>
-                <div className="img-title">{slides[currentIndex].title}</div>
-            </div>
+            <a onClick={handleClick}>
+                <div className='carousel-img' style = {{backgroundImage: `url(${slides[currentIndex].imgURL})`}}>
+                    <h1 className="img-title">{slides[currentIndex].title}</h1>
+                </div>
+            </a>
             <div className="dots-container">
                 {slides.map((slide, slideIndex) => (
-                    <div key={slideIndex} className="dots" onClick={() => selectSlide(slideIndex)}>&#x2022;</div>
+                    <div key={slideIndex} className={`dots ${slideIndex === currentIndex ? "active" : "" }`} onClick={() => selectSlide(slideIndex)}>&#x2022;</div>
                 ))}
             </div>
         </div>
