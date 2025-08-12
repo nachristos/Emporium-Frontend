@@ -1,0 +1,14 @@
+.wrapper {
+    height: 100vh;
+    margin-top: 50px;
+}
+h1 {
+    color: var(--primary-color);
+    font-weight: bold;
+    top: 50px;
+}
+
+p {
+    margin-top: 30px;
+    color: var(--text-color);
+}
