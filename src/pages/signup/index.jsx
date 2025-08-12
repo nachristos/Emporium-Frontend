@@ -7,7 +7,10 @@ import logo from '../../assets/logo.svg';
 import './index.css';
 
 export const Signup = () => {
-  const { create } = useMutate(`/user`);
+  const { create } = useMutate(`/user`, () => {
+    window.location.href = '/'; // Redirect to login after successful signup
+    alert('Profile updated successfully!');
+  });
   
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -35,17 +38,11 @@ export const Signup = () => {
       email,
       accessLevel: 1, // TODO fix this on back-end
       ...(newPassword && { password: newPassword })
-    }).then(response => {
-      if (response.ok) {
-        alert('Profile updated successfully!');
-      } else {
-        alert('Failed to update profile.');
-      }
     })
   }
   
   return (
-    <div className="profile scrollable container">
+    <div className="scrollable container">
               <div className="w-full mb center">
                 <img src={logo} className="logo" alt="Rd Nefario" />
               </div>
@@ -74,13 +71,15 @@ export const Signup = () => {
           <div className="flex w-full mb">
             <Input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={setConfirmPassword} />
           </div>
-          <div className="flex w-full between">
-              <Button href="/login" variant="secondary" className="w-full" onClick={() => window.location.pathname = '/'}>
-                Login
-              </Button>
-              <Button  variant="primary" className="w-full" onClick={handleCreate} disabled={disabled}>
-                Create account
-              </Button>
+          <div className="flex w-full mb">
+            <Button  variant="primary" size="large" className="w-full" onClick={handleCreate} disabled={disabled}>
+              Register
+            </Button>
+          </div>
+          <div>
+            <a href="/" className="w-full mb text">
+              Go Back
+            </a>
           </div>
         </div>
       </CardBase>

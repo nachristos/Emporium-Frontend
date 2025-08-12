@@ -42,7 +42,7 @@ export const Shop = () => {
   }
   
   return (
-    <div className="scrollable w-full">
+    <div className="scrollable">
       { selectedItemId ? (
         <ItemDetails item={selectedItem} onClose={handleClose} />
       ) : (

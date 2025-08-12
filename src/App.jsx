@@ -10,6 +10,7 @@ import { Signup } from './pages/signup/index.jsx'
 import { Login } from './pages/login/index.jsx'
 import { CartContextProvider } from './context/cart-context.jsx/cart-context-provider.jsx'
 import { Shop } from './pages/shop/index.jsx'
+import { VerifyPage } from './pages/verify/index.jsx'
 
 
 const queryClient = new QueryClient()
@@ -29,6 +30,7 @@ function App() {
                   <Route path={'/home/:itemId?'} element={<Home />}/>
                   <Route path={'/shop/:itemId?'} element={<Shop />}/>
                   <Route path={'/account'} element={<UserContextProvider children={<Profile />} />}/>
+                  <Route path={'/verify/:token'} element={<VerifyPage />} />
                 </Routes>
             </div>
           </AuthContextProvider>

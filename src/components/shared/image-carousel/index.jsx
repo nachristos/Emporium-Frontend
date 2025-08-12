@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import './index.css'
 
 
@@ -40,7 +40,7 @@ const ImageCarousel = ({slides, onClick}) => {
             
             <a onClick={handleClick}>
                 <div className='carousel-img' style = {{backgroundImage: `url(${slides[currentIndex].imgURL})`}}>
-                    <h1 className="img-title">{slides[currentIndex].title}</h1>
+                    <h1 className="img-title p mx">{slides[currentIndex].title}</h1>
                 </div>
             </a>
             <div className="dots-container">

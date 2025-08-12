@@ -1,6 +1,6 @@
 import { useListings } from "../../hooks/use-listings";
-import ImageCarousel from "../../components/shared/image-carousel";
-import './index.css'
+import ImageCarousel from "../shared/image-carousel";
+import './index.css';
 
 // Export----------------------------------------------------------------------------------------------------
 export const Listing = () => {
@@ -14,7 +14,7 @@ export const Listing = () => {
   
   // Handlers
   const handleClick = (id) => {
-    window.location.href = `/home/${id}`
+    window.location.href = `/shop/${id}`
   }
   
   // Listings (Ads) Image slides

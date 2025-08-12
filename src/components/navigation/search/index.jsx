@@ -13,7 +13,7 @@ export const Search = ({ ref, open, onBlur }) => {
   },[data, searchTerm])
   
   const handleClick = (id) => {
-    location.pathname = `/home/${id}`;
+    location.pathname = `/shop/${id}`;
   }
   
   const handleBlur = () => {

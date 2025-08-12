@@ -1,10 +1,10 @@
 import { useItems } from "../../hooks/use-items";
 import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Listing } from "../Listing";
 import { Loader } from "../../components/shared/loader";
 import { ItemCard } from "../../components/shared/item-card";
 import { ItemDetails } from "../../components/shared/item-details";
+import { Listing } from "../../components/listing";
 
 
 export const Home = () => {

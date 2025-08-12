@@ -14,5 +14,6 @@ export const useUser = () => {
       }
       return resp
     },
+    enabled: !!token && !!userId, // Only run if token and userId are available
   })
 }
