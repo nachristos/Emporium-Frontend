@@ -4,3 +4,18 @@
   margin-left: 4px;
   margin-bottom: -2px;
 }
+
+.email-sent {
+  background-color: #3E5075;
+  border-radius: 12px;
+  width: 284px;
+  height: 294px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.email-sent img {
+  width: 120px;
+  height: 50px;
+  margin-top: 20px;
+}

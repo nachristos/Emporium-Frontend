@@ -7,9 +7,10 @@ import logo from '../../assets/logo.svg';
 import './index.css';
 
 export const Signup = () => {
+  const [emailSent, setEmailSent] = useState(false);
   const { create } = useMutate(`/user`, () => {
     window.location.href = '/'; // Redirect to login after successful signup
-    alert('Profile updated successfully!');
+    setEmailSent(true);
   });
   
   const [firstName, setFirstName] = useState('');
@@ -43,9 +44,20 @@ export const Signup = () => {
   
   return (
     <div className="scrollable container">
-              <div className="w-full mb center">
-                <img src={logo} className="logo" alt="Rd Nefario" />
-              </div>
+      <div className="w-full mb center">
+        <img src={logo} className="logo" alt="Rd Nefario" />
+      </div>
+      { emailSent ? (
+        <div className="email-sent text p mt">
+          <img src={'mail.png'} alt="Rd Nefario" />
+          <h2 className="sec mb">
+            Email Sent!
+          </h2>
+          <h5 className="body center mb p">
+            A verification code has been sent to your email, please check your junk mail if you don’t receive an email.
+          </h5>
+        </div>
+      ) : (
       <CardBase>
         <div className="signup container center text p">
           <h2 className="title">
@@ -83,6 +95,7 @@ export const Signup = () => {
           </div>
         </div>
       </CardBase>
+      )}
     </div>
   );
 }
