@@ -94,7 +94,7 @@ export const Navigation = () => {
           <div className='items flex-col text center between'>
             <div className='w-full p'>
               <NavButton className='mb' name={'Home'} active={path === '/home'} onClick={() => setPath('/home')}/>
-              <NavButton className='mb' name={'About'} active={path === '/about'}/>
+              <NavButton className='mb' name={'About'} active={path === '/about'} onClick={() => setPath('/about')}/>
               <div className='divider mb' />
               <NavButton element={
                 <div className='shop-all'>

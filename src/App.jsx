@@ -3,6 +3,7 @@ import './App.css'
 import { Navigation } from './components/navigation/index.jsx'
 import { Profile } from './pages/profile/index.jsx'
 import { Home } from './pages/home/index.jsx'
+import { About } from './pages/about/index.jsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AuthContextProvider } from './context/auth-context/auth-context-provider.jsx'
 import { UserContextProvider } from "./context/user-context/user-context-provider.jsx"
@@ -27,6 +28,7 @@ function App() {
                 <Routes>
                   <Route path={'/'} element={<Login redirect />}/>
                   <Route path={'/register'} element={<Signup />}/>
+                  <Route path={'/about'} element={<About />}/>
                   <Route path={'/home/:itemId?'} element={<Home />}/>
                   <Route path={'/shop/:itemId?'} element={<Shop />}/>
                   <Route path={'/account'} element={<UserContextProvider children={<Profile />} />}/>
