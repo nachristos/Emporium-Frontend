@@ -28,7 +28,7 @@ const ImageCarousel = ({slides, onClick}) => {
     }
 
     const handleClick = () => {
-        onClick(slides[currentIndex].id)
+        onClick(slides[currentIndex].slug)
         
     }
 

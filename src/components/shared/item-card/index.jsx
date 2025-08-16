@@ -13,7 +13,7 @@ export const ItemCard = ({ item, onClick }) => {
   
   return (
     <div id={item._id} className="item-card">
-      <a onClick={() => onClick(item._id)}>
+      <a onClick={() => onClick(item.slug)}>
         <CardBase>
           <div>
             <img src={item.imgURL || placeholderImg} />

@@ -19,7 +19,7 @@ export const Listing = () => {
   
   // Listings (Ads) Image slides
   const slides = data.map(listing => ({
-     imgURL: listing.itemId.imgURL, title: listing.itemId.name, id: listing.itemId._id
+     imgURL: listing.itemId.imgURL, title: listing.itemId.name, slug: listing.itemId.slug
   }))
   
   // Display

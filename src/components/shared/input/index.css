@@ -26,3 +26,27 @@
   text-align: start;
   margin-bottom: 10px;
 }
+
+.input-container .alert-wrapper {
+  position: absolute;
+  margin-left: 10px;
+}
+
+.input-container .alert {
+  background-color: #51658d;
+  border-radius: 6px;
+  padding: 6px;
+  color: #FF4C4C;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: none; 
+  border-bottom: 8px solid #51658d; 
+  margin: 0 0 0 8px;
+}

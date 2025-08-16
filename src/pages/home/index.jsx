@@ -13,10 +13,14 @@ export const Home = () => {
   const [selectedItemId, setSelectedItemId] = useState(itemId || undefined)
 
   
-  const selectedItem = useMemo(() => data?.find(d => d._id === selectedItemId), [data, selectedItemId])  
+  const selectedItem = useMemo(() => data?.find(d => d.slug === selectedItemId), [data, selectedItemId])  
   
   if (!data && isLoading) {
     return  <Loader />;
+  }
+  
+  if (selectedItemId && !selectedItem) {
+    return <Loader />;
   }
   
   const handleClick = (id) => {
@@ -32,7 +36,7 @@ export const Home = () => {
   return (
     <div className="scrollable">
       { selectedItemId ? (
-        <ItemDetails item={selectedItem} onClose={handleClose} />
+        <ItemDetails item={selectedItem} onClose={handleClose} onUpdate={handleClick} />
       ) : (
         <>
           <Listing/>

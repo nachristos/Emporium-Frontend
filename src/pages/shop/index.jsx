@@ -19,7 +19,7 @@ export const Shop = () => {
     return [...set];
   },[data])
 
-  const selectedItem = useMemo(() => data?.find(d => d._id === selectedItemId), [data, selectedItemId])  
+  const selectedItem = useMemo(() => data?.find(d => d.slug === selectedItemId), [data, selectedItemId])  
   const filteredItems = useMemo(() => category ? data?.filter(d => d.category === category) : data, [data, category])  
   
   if (!data && isLoading) {

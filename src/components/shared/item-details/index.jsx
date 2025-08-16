@@ -10,7 +10,7 @@ import './index.css';
 import { EditItem } from "../../../pages/admin/item/edit-item";
 import { EditIcon } from "../../../assets/icons/edit-icon";
 
-export const ItemDetails = ({ item, onClose }) => {
+export const ItemDetails = ({ item, onClose, onUpdate }) => {
   const { updateItem, open, cart } = useCartContext();
   const [description, setDescription] = useState(false);
   const [details, setDetails] = useState(false);
@@ -31,7 +31,7 @@ export const ItemDetails = ({ item, onClose }) => {
       <>
         {edit ? 
         (
-        <EditItem item={item} onClose={() => setEdit(false)} />
+        <EditItem item={item} onClose={() => setEdit(false)} onUpdate={onUpdate} />
         ):(
         <>
           <div className="flex between">

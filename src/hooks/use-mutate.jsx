@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useAuthContext } from "./use-auth-context";
 import { post, put } from "../utils/fetch-client";
 
-export const useMutate = (url, onSuccess = () => []) => {
+export const useMutate = (url, onSuccess = () => [], onError = () => []) => {
   const { token } = useAuthContext();
 
   const create = useMutation({
@@ -11,6 +11,9 @@ export const useMutate = (url, onSuccess = () => []) => {
     },
     onSuccess: (resp) => {
       onSuccess(resp);
+    },
+    onError: (error) => {
+      onError(error);
     }
   }).mutate
   
@@ -20,6 +23,9 @@ export const useMutate = (url, onSuccess = () => []) => {
     },
     onSuccess: (resp) => {
       onSuccess(resp);
+    },
+    onError: (error) => {
+      onError(error);
     }
   }).mutate
 

@@ -9,36 +9,43 @@ import './index.css';
 export const Signup = () => {
   const [emailSent, setEmailSent] = useState(false);
   const { create } = useMutate(`/user`, () => {
-    window.location.href = '/'; // Redirect to login after successful signup
     setEmailSent(true);
+  }, error => {
+    if (error?.message?.includes('email'))
+      return setEmailError('Email already exists');
   });
-  
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [alias, setAlias] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   
-  const newPassword = useMemo(() => {
-    if (password && confirmPassword && password === confirmPassword) {
-      return password;
+  const checkPassword = () => {
+    if (password && password !== confirmPassword) {
+      setPasswordError('Passwords do not match');
+      return false;
     }
-    return '';
-  }, [password, confirmPassword]);
+    setPasswordError('');
+    return true;
+  }
   
   const disabled = useMemo(() => {
-    return !firstName || !lastName || !alias || !email || (newPassword && (newPassword !== confirmPassword));
-  }, [firstName, lastName, alias, email, newPassword, confirmPassword]);
-  
+    return !firstName || !lastName || !alias || !email || !password || ((password !== confirmPassword));
+  }, [firstName, lastName, alias, email, password, confirmPassword]);
+
   const handleCreate = () => {
+    if (!checkPassword()) return;
     create({
       firstName,
       lastName,
       alias,
       email,
       accessLevel: 1, // TODO fix this on back-end
-      ...(newPassword && { password: newPassword })
+      password
     })
   }
   
@@ -75,13 +82,13 @@ export const Signup = () => {
             <Input placeholder="Alias" value={alias} onChange={setAlias} />
           </div>
           <div className="w-full">
-            <Input placeholder="Email" value={email} onChange={setEmail} />
+            <Input placeholder="Email" onClick={() => setEmailError('')} alert={emailError} value={email} onChange={setEmail} />
           </div>
           <div className="flex w-full">
             <Input type="password" placeholder="Password" value={password} onChange={setPassword} />
           </div>
           <div className="flex w-full mb">
-            <Input type="password" placeholder="Confirm Password" value={confirmPassword} onChange={setConfirmPassword} />
+            <Input type="password" placeholder="Confirm Password" value={confirmPassword} alert={passwordError} onChange={setConfirmPassword} onBlur={checkPassword} onClick={() => setPasswordError('')} />
           </div>
           <div className="flex w-full mb">
             <Button  variant="primary" size="large" className="w-full" onClick={handleCreate} disabled={disabled}>

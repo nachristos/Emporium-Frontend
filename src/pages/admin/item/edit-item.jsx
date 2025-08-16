@@ -7,7 +7,7 @@ import { Button } from "../../../components/shared/button";
 import './index.css';
 import { useQueryClient } from "@tanstack/react-query";
 
-export const EditItem = ({ item, onClose }) => {
+export const EditItem = ({ item, onClose, onUpdate }) => {
   const [name, setName] = useState(item.name);
   const [attributes, setAttributes] = useState(item.attributes);
   const [category, setCategory] = useState(item.category);
@@ -15,7 +15,10 @@ export const EditItem = ({ item, onClose }) => {
   const [picture, setPicture] = useState(null);
   const queryClient = useQueryClient();
   
-  const { update } = useMutate(`/item/${item._id}`, () => queryClient.invalidateQueries(['items']));
+  const { update } = useMutate(`/item/${item._id}`, resp => {
+    queryClient.invalidateQueries(['items']);
+    onUpdate(resp.slug);
+  });
   
   const handleFileChange = async (fileList) => {
     if (fileList) {
