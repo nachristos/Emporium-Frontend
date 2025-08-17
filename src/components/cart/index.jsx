@@ -19,6 +19,7 @@ export const Cart = ({ ref, open, onClose, items }) => {
         name: i.item.name,
         price: i.item.price,
         quantity: i.quantity,
+        imgURL: i.item.imgURL,
     })))
   };
   
