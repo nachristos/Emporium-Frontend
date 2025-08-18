@@ -44,7 +44,6 @@ export const Signup = () => {
       lastName,
       alias,
       email,
-      accessLevel: 1, // TODO fix this on back-end
       password
     })
   }

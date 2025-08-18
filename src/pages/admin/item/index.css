@@ -30,3 +30,8 @@
   height: 20px;
   margin-bottom: -2px;
 }
+
+.item-edit .info {
+  width: 100vw;
+  max-width: 500px;
+}

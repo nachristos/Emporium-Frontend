@@ -9,6 +9,7 @@ import { useCartContext } from "../../../hooks/use-cart-context";
 import './index.css';
 import { EditItem } from "../../../pages/admin/item/edit-item";
 import { EditIcon } from "../../../assets/icons/edit-icon";
+import { AuthWrapper } from "../auth-wrapper";
 
 export const ItemDetails = ({ item, onClose, onUpdate }) => {
   const { updateItem, open, cart } = useCartContext();
@@ -34,13 +35,15 @@ export const ItemDetails = ({ item, onClose, onUpdate }) => {
         <EditItem item={item} onClose={() => setEdit(false)} onUpdate={onUpdate} />
         ):(
         <>
-          <div className="flex between">
+          <div className="flex between pxs">
             <IconButton className={'close'} onClick={onClose}>
               <CloseIcon />
             </IconButton>
-            <IconButton className={'close'} onClick={() => setEdit(true)}>
-              <EditIcon />
-            </IconButton>
+            <AuthWrapper>
+              <IconButton className={'close'} onClick={() => setEdit(true)}>
+                <EditIcon />
+              </IconButton>
+            </AuthWrapper>
           </div>
             <div className="w-full flex wrap middle item-page">
               <img className="image" src={item.imgURL || placeholderImg} /> 

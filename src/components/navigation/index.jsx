@@ -14,6 +14,7 @@ import { useCartContext } from '../../hooks/use-cart-context';
 import { ChevDown } from '../../assets/icons/chev-down';
 import { clearSearch, setSearch } from '../../utils/searchParams';
 import { useItems } from '../../hooks/use-items';
+import { AuthWrapper } from '../shared/auth-wrapper';
 
 export const Navigation = () => {
   const { token, setAuth } = useAuthContext();
@@ -93,6 +94,9 @@ export const Navigation = () => {
           </div>
           <div className='items flex-col text center between'>
             <div className='w-full p'>
+              <AuthWrapper>
+                <NavButton className='mb' name={'Admin'} active={path.includes('/admin')} onClick={() => setPath('/admin')}/>
+              </AuthWrapper>
               <NavButton className='mb' name={'Home'} active={path === '/home'} onClick={() => setPath('/home')}/>
               <NavButton className='mb' name={'About'} active={path === '/about'} onClick={() => setPath('/about')}/>
               <div className='divider mb' />

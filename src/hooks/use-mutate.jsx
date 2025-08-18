@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { useAuthContext } from "./use-auth-context";
-import { post, put } from "../utils/fetch-client";
+import { del, post, put } from "../utils/fetch-client";
 
 export const useMutate = (url, onSuccess = () => [], onError = () => []) => {
   const { token } = useAuthContext();
@@ -28,6 +28,18 @@ export const useMutate = (url, onSuccess = () => [], onError = () => []) => {
       onError(error);
     }
   }).mutate
+  
+    const destroy = useMutation({
+    mutationFn: async () => {
+      return await del(url, token)
+    },
+    onSuccess: (resp) => {
+      onSuccess(resp);
+    },
+    onError: (error) => {
+      onError(error);
+    }
+  }).mutate
 
-  return { create, update };
+  return { create, update, destroy  };
 }

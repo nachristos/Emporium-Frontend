@@ -12,6 +12,9 @@ import { Login } from './pages/login/index.jsx'
 import { CartContextProvider } from './context/cart-context.jsx/cart-context-provider.jsx'
 import { Shop } from './pages/shop/index.jsx'
 import { VerifyPage } from './pages/verify/index.jsx'
+import { AdminPage } from './pages/admin/index.jsx'
+import bgImage from './assets/bg.png'
+import { ManageItems } from './pages/admin/manage-items/index.jsx'
 
 
 const queryClient = new QueryClient()
@@ -24,7 +27,7 @@ function App() {
         <CartContextProvider>
           <AuthContextProvider>
             <Navigation />
-            <div className="page">
+            <div style={{ backgroundImage: `url(${bgImage})` }} className="page">
                 <Routes>
                   <Route path={'/'} element={<Login redirect />}/>
                   <Route path={'/register'} element={<Signup />}/>
@@ -33,6 +36,8 @@ function App() {
                   <Route path={'/shop/:itemId?'} element={<Shop />}/>
                   <Route path={'/account'} element={<UserContextProvider children={<Profile />} />}/>
                   <Route path={'/verify/:token'} element={<VerifyPage />} />
+                  <Route path={'/admin'} element={<UserContextProvider children={<AdminPage />} />}/>
+                  <Route path={'/admin/items'} element={<UserContextProvider children={<ManageItems />} />}/>
                 </Routes>
             </div>
           </AuthContextProvider>

@@ -4,16 +4,29 @@ import { CardBase } from "../../components/shared/card-base"
 import { Input } from "../../components/shared/input"
 import logo from '../../assets/logo.svg'
 import './index.css'
-import { post } from "../../utils/fetch-client"
 import { useAuthContext } from "../../hooks/use-auth-context"
+import { useMutate } from "../../hooks/use-mutate"
 
 const HIDDEN_PAGES = ['/login']
 
 export const Login = ({ redirect }) => {
   const { token, setAuth } = useAuthContext();
   const [email, setEmail] = useState('')
+  const [error, setError] = useState('')
   const [password, setPassword] = useState('')
-  
+  const { create } = useMutate('/auth/signin', 
+    (data) => {
+      if (data.accessToken) {
+        setAuth(data);
+      } else {
+        setError('Login failed. Please check your credentials.');
+      }
+    },
+    (error) => {
+      setError(error.message);
+    }
+  );
+
   useEffect(() => {
     // Hide the navigation bar when on the login page
     const nav = document.getElementById('nav');
@@ -28,16 +41,12 @@ export const Login = ({ redirect }) => {
   
   
   const handleSubmit = () => {
-    post('/auth/signin', {
-      email,
-      password,
-    }).then((data) => {
-      if (data.accessToken) {
-        setAuth(data);
-      } else {
-        alert('Login failed. Please check your credentials.');
+    create(
+      {
+        email,
+        password,
       }
-    });
+    )
   }
   
   if (token) {
@@ -59,8 +68,8 @@ export const Login = ({ redirect }) => {
               Enter you email and password
             </h5>
             <div className="w-full p">
-              <Input type="email" placeholder="Email" onChange={setEmail} />
-              <Input type="password" placeholder="Password" onChange={setPassword} />
+              <Input type="email" placeholder="Email" onChange={setEmail} alert={error} onClick={() => setError('')} />
+              <Input type="password" placeholder="Password" onChange={setPassword} onClick={() => setError('')} />
             </div>
             <div>
               <a href="/forgot-password" className="w-full mb text">
