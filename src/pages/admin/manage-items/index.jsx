@@ -23,7 +23,7 @@ export const ManageItems = () => {
           <EditItem item={item} onClose={() => setItem(undefined)} />
         </div>
       ): (
-      <div className="scrollable w-full center">
+      <div className="scrollable w-full mt">
         <div className="w-full center">
           <h1 className="pri px">Manage Items</h1>
         </div>
@@ -64,8 +64,8 @@ export const ManageItems = () => {
             </div>
           </div>
         ))}
-        <div className="mt py">
-          <Button variant="primary" size="large" onClick={() => setItem({})}>
+        <div className="mt py center">
+          <Button className={'new-item-button'} variant="primary" size="large" onClick={() => setItem({})}>
             Add New Item
           </Button>
         </div>

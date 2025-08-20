@@ -14,7 +14,7 @@ export const Listing = () => {
   
   // Handlers
   const handleClick = (id) => {
-    window.location.href = `/shop/${id}`
+    window.location.href = `/home/${id}`
   }
   
   // Listings (Ads) Image slides
@@ -24,6 +24,6 @@ export const Listing = () => {
   
   // Display
   return (
-        <ImageCarousel slides={slides} onClick={handleClick}/>  
+    <ImageCarousel slides={slides} onClick={handleClick}/>  
   );
 }

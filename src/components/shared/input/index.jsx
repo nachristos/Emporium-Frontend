@@ -1,11 +1,16 @@
-import './index.css'
+import './index.css';
 
 export const Input = ({ type = 'text', alert, placeholder, className, onChange, ...props }) => {
+  
+  const formatText = (text) => {
+    onChange(text.replaceAll('- ', '• '));
+  }
+    
   return (
     <div className={`input-container w-full`}>
       <h4>{placeholder}</h4>
       { type === 'textbox' ? (
-        <textarea onChange={(e) => onChange(e.target.value)} className={`input textbox`} {...props} />
+        <textarea onChange={(e) => formatText(e.target.value)} className={`input textbox`} {...props} />
       ):(
       <input
         type={type}
