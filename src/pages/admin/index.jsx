@@ -12,6 +12,7 @@ export const AdminPage = () => {
         </div>
         <div className="w-full center pt">
           <Button variant={"secondary"} onClick={() => location.pathname = '/admin/items'}>Manage Items</Button>
+          <Button variant={"secondary"} onClick={() => location.pathname = '/admin/listings'}>Manage Ads</Button>
         </div>
       </div>
     </div>
