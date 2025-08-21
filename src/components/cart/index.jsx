@@ -6,6 +6,7 @@ import { IconButton } from '../shared/icon-button';
 import { useCartContext } from '../../hooks/use-cart-context';
 import './index.css';
 import { useMutate } from '../../hooks/use-mutate';
+import { useMemo } from 'react';
 
 export const Cart = ({ ref, open, onClose, items }) => {
   const { updateItem, clearCart } = useCartContext();
@@ -13,6 +14,13 @@ export const Cart = ({ ref, open, onClose, items }) => {
     window.location.href = resp.url;
     clearCart();
   });
+  
+  const total = useMemo(() => {
+    return items.reduce((a, i) => {
+    return a += (i.item?.price * i.quantity);  
+      
+    }, 0)
+  },[items])
   
   const handleCheckout = () => {
     create(items.map((i) => ({
@@ -32,7 +40,7 @@ export const Cart = ({ ref, open, onClose, items }) => {
           </div>
           <div className='flex-col text center'>
             <h2 className="mb">Cart</h2>
-            <div className="w-full divider mt"/>
+            <div className="w-full divider"/>
             <div className='w-full'>
               {items?.map(i => (
                 <div key={i.item?._id} className='pt'>
@@ -54,13 +62,23 @@ export const Cart = ({ ref, open, onClose, items }) => {
                       </div>
                     </div>
                   </div>
+                  <div className='price'>
+                    <h2 className='body'>
+                      {`$${(i.item?.price * i.quantity / 100).toFixed(2)}`}
+                    </h2>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </div>
         <div className='w-full mb'>
-            <Button className={'mb'} size={'large'} variant={'primary'} onClick={handleCheckout}>Checkout</Button>
+            {!!items && (
+              <div className='end text'>
+                <h2>{`Total: $${(total / 100).toFixed(2)}`}</h2>
+              </div>
+            )}
+            <Button size={'large'} variant={'primary'} onClick={handleCheckout}>Checkout</Button>
         </div>
       </div>
     </div>

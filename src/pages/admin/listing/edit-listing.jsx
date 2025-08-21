@@ -53,7 +53,7 @@ export const EditListing = ({ listing, onClose, onUpdate }) => {
   }
   
   return (
-    <div className="w-full listing-edit">
+    <div className="w-full listing-edit p">
       <div className="mb center listing-image">
         <div className="border-pri wrapper" onClick={() => document.querySelector('input[type="file"]').click()}>
           {picture || listing.imgURL ? (
@@ -70,7 +70,7 @@ export const EditListing = ({ listing, onClose, onUpdate }) => {
           <input type="file" hidden onChange={e => handleFileChange(e.target.files)} />
         </div>
       </div>
-      <div className="p">
+      <div className="">
         <div className="mb">
           { listing?._id && (
             <div>

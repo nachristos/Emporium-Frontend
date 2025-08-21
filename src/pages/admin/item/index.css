@@ -4,9 +4,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: 90vw;
   max-width: 500px;
-  height: 100vw;
+  height: 90vw;
   max-height: 500px;
   cursor: pointer;
 }
@@ -18,9 +18,9 @@
 }
 
 .item-image img {
-  width: 100vw;
+  width: 90vw;
   max-width: 500px;
-  height: 100vw;
+  height: 90vw;
   max-height: 500px;
   object-fit: cover;
   border-radius: 8px;
@@ -32,6 +32,6 @@
 }
 
 .item-edit .info {
-  width: 100vw;
+  width: 90vw;
   max-width: 500px;
 }

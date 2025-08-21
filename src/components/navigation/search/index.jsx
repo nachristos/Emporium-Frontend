@@ -45,7 +45,7 @@ export const Search = ({ ref, open, onBlur }) => {
       <div className='w-full divider'>
         { open && filteredItems?.map(i => (
           <div className='pt'>
-            <button onClick={() => handleClick(i._id)}>
+            <button onClick={() => handleClick(i.slug)}>
               <img className="image" src={i.imgURL || placeHolderImg} />
               <h2 className='body' style={{ marginLeft: '12px'}}>
                 {i.name}

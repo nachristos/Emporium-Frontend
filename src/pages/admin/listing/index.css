@@ -4,10 +4,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: 90vw;
   max-width: 500px;
-  height: 100vw;
-  max-height: 500px;
   cursor: pointer;
 }
 
@@ -18,10 +16,9 @@
 }
 
 .listing-image img {
-  width: 100vw;
+  width: 90vw;
   max-width: 500px;
-  height: 100vw;
-  max-height: 500px;
+  aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -40,8 +37,7 @@
   font-size: 16px;
   height: 36px;
   display: flex;
-  width: 100%;
-  width: 500px;
+  width: 90vw;
   max-width: 500px;
   box-sizing: border-box;
 }

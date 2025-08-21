@@ -5,7 +5,6 @@ import { UploadIcon } from "../../../assets/icons/upload-icon";
 import { useMutate } from "../../../hooks/use-mutate";
 import { Button } from "../../../components/shared/button";
 import './index.css';
-import { useQueryClient } from "@tanstack/react-query";
 
 export const EditItem = ({ item, onClose, onUpdate }) => {
   const [name, setName] = useState(item?.name || '');
@@ -15,10 +14,9 @@ export const EditItem = ({ item, onClose, onUpdate }) => {
   const [price, setPrice] = useState(item?.price || 0);
   const [stock, setStock] = useState(item?.stock || 0);
   const [picture, setPicture] = useState(null);
-  const queryClient = useQueryClient();
   
   const { update, create: post, destroy } = useMutate(`/item/${item._id || ''}`, resp => {
-    queryClient.invalidateQueries(['items']);
+    location.href = location.href.toString().replace(item.slug, resp.slug);
     onUpdate(resp.slug);
   });
   

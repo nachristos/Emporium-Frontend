@@ -9,10 +9,8 @@
   box-sizing: border-box;
   top: 0;
   z-index: 99;
-  
   background: linear-gradient(84deg, #4d62889f 50%, #3f6d929f 50%);
   box-shadow: -30px  -30px 50px #5d37e835 inset;
-  
   border: 2px solid;
   border-image: 
     linear-gradient(
@@ -38,8 +36,9 @@
   top: 0;
   left: -270px;
   width: 250px;
-  height: 110%;
-  margin-top: -20px;
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
   margin-left: -8px;
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -57,7 +56,13 @@
   background-repeat: no-repeat;
   transition: left 0.3s ease-in-out;
   z-index: 100;
-  padding: 30px 0 0 20px;
+  padding: 0px 0 0 20px;
+}
+
+.signout {
+  position: absolute;
+  bottom: 10px;
+  padding-left: 56px;
 }
 
 .drawer.open {
@@ -70,6 +75,10 @@
 
 .drawer .icon:hover {
   color: var(--primary-color)
+}
+
+.close {
+  margin-top: 8px;
 }
 
 .drawer .close .icon {
@@ -98,6 +107,11 @@
 .shop-all .chevron {
   margin-left: 8px;
   margin-top: -2px;
+}
+
+.shop-items {
+  max-height: calc(100vh - 400px);
+  overflow: scroll;
 }
 
 .notification {

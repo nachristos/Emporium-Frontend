@@ -2,32 +2,33 @@
     position: relative; 
 }
 
-.left-arrow {
-    height: 10%;
+.arrow {
+    height: 45px;
     position:absolute;
-    top: 50%;
-    left: 10px;
+    top: calc(50% - 45px);
     font-size: 45px;
     color:#FF4C4C;
     z-index: 1;
     cursor: pointer;
-    opacity: 0.2;
+    background-color: aliceblue;
+    border-radius: 50%;
+    padding: 4px;
+    display: flex;
+    opacity: 0.5;
+    line-height: 45px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.left-arrow {
+    left: 10px;
 }
 
 .right-arrow {
-    height: 10%;
-    position:absolute;
-    top: 50%;
     right: 10px;
-    font-size: 45px;
-    color:#FF4C4C;
-    z-index: 1;
-    cursor: pointer;
-    opacity: 0.2;
 }
 
 .right-arrow:hover , .left-arrow:hover {
-    opacity: 1;
+    opacity: 0.7;
 }
 
 .carousel-img {

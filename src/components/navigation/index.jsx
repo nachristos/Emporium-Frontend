@@ -93,7 +93,7 @@ export const Navigation = () => {
             <IconButton onClick={() => setMenuOpen(false)}><CloseIcon/></IconButton>
           </div>
           <div className='items flex-col text center between'>
-            <div className='w-full p'>
+            <div className='w-full px'>
               <AuthWrapper>
                 <NavButton className='mb' name={'Admin'} active={path.includes('/admin')} onClick={() => setPath('/admin')}/>
               </AuthWrapper>
@@ -109,18 +109,20 @@ export const Navigation = () => {
                 </div>
                 } onClick={() => setShopAll(!shopAll)}/>
               {shopAll && (
-                <>
+                <div className='shop-items'>
                 <NavButton className='mys' element={<h4>All Items</h4>} onClick={() => setPath('/shop')}/>
                   {categories.map(c => (
                     <NavButton className='mys' element={<h4>{c}</h4>} onClick={() => setPath('/shop', 'category', c)}/>
                   ))}
-                </>
+                </div>
               )}
             </div>
-            {token &&
-              <NavButton name={'Sign Out'} onClick={handleSignOut}/>
-            } 
           </div>
+          {token &&
+            <div className='signout text'>
+              <NavButton name={'Sign Out'} onClick={handleSignOut}/>
+            </div>
+          } 
         </div>
       </div>
     </>
