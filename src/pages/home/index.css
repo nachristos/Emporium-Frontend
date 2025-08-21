@@ -1,0 +1,10 @@
+
+.x-scroll {
+  max-width: 100vw;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.view-all-button {
+  width: 340px
+}

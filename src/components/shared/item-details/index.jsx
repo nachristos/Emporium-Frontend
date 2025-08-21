@@ -28,6 +28,27 @@ export const ItemDetails = ({ item, onClose, onUpdate }) => {
     open();
   }
   
+  const FormatText = ({ textArray }) => (
+    <p>
+      {textArray.split('• ').map((i) => (
+        <>
+          { !!i.length && (
+            <div className="text-block">
+                <>
+                  <div>
+                  •
+                  </div>
+                  <div style={{ marginLeft: '8px' }}>
+                    {i}
+                  </div>
+                </>
+            </div>
+          )}
+        </>
+      ))}
+    </p>
+  )
+  
   return (
       <>
         {edit ? 
@@ -80,10 +101,8 @@ export const ItemDetails = ({ item, onClose, onUpdate }) => {
                   </div>
                   <div className="mb">
                     { description && (
-                      <div className="body mx p">
-                        <p>
-                          {item.attributes}
-                        </p>
+                      <div className="body p">
+                        <FormatText textArray={item.attributes} />
                       </div>
                     )}
                   </div>
@@ -97,10 +116,8 @@ export const ItemDetails = ({ item, onClose, onUpdate }) => {
                   </div>
                   <div className="mb">
                     { details && (
-                      <div className="body mx p">
-                        <p>
-                          {item.description}
-                        </p>
+                      <div className="body p">
+                          <FormatText textArray={item.description} />
                       </div>
                     )}
                   </div>

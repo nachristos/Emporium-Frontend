@@ -34,7 +34,7 @@ const ImageCarousel = ({slides, onClick}) => {
 
     // Display
     return (
-        <div className='carousel-wrapper w-full p' >
+        <div className='carousel-wrapper w-full' >
             <div className="left-arrow" onClick={previous}>&#8678;</div>
             <div className="right-arrow" onClick={next}>&#8680;</div>
             

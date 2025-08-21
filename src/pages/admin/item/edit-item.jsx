@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Input } from "../../../components/shared/input";
 import { ImageIcon } from "../../../assets/icons/image-icon";
 import { UploadIcon } from "../../../assets/icons/upload-icon";
@@ -37,12 +37,20 @@ export const EditItem = ({ item, onClose, onUpdate }) => {
     onClose();
   }
   
+  const formattedAttributes = useMemo(() => {
+    return attributes.replaceAll('- ', '• ')
+  },[attributes])
+  
+  const formattedDescription = useMemo(() => {
+    return description.replaceAll('- ', '• ')
+  },[description])
+  
   const handleSubmit = () => {
     if(item?._id) {
     update({
       ...item,
       name,
-      attributes,
+      attributes: formattedAttributes,
       category,
       description,
       price,
@@ -65,7 +73,7 @@ export const EditItem = ({ item, onClose, onUpdate }) => {
   
   return (
     <div className="w-full item-edit">
-      <div className="w-full wrap center mb">
+      <div className="w-full wrap center mb p">
         <div className="mb center item-image">
           <div className="border-pri wrapper" onClick={() => document.querySelector('input[type="file"]').click()}>
             {picture || item.imgURL ? (
@@ -91,8 +99,8 @@ export const EditItem = ({ item, onClose, onUpdate }) => {
               <div className="mxs" />
               <Input placeholder={'Stock'} onChange={value => setStock(value)} value={stock} type="number" />
             </div>
-            <Input type="textbox" placeholder={'Attributes'} onChange={setAttributes} value={attributes}  />
-            <Input type="textbox" placeholder={'Description'} onChange={setDescription} value={description}  />
+            <Input type="textbox" placeholder={'Attributes'} onChange={setAttributes} value={formattedAttributes}  />
+            <Input type="textbox" placeholder={'Description'} onChange={setDescription} value={formattedDescription}  />
           </div>
           <div className="flex between">
             { item?._id && (

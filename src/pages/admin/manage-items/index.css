@@ -24,6 +24,10 @@
   text-overflow: ellipsis;
 }
 
+.new-item-button {
+  width: 200px;
+}
+
 @media screen and (max-width: 660px) {
   .item-row .details {
     display: none;

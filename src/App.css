@@ -95,6 +95,11 @@ p {
   margin-block: 4px;
 }
 
+.text-block {
+  display: flex;
+  margin-bottom: 18px;
+}
+
 .title {
   font-size: 35px;
   font-weight: 500;
