@@ -5,15 +5,22 @@ import { UploadIcon } from "../../../assets/icons/upload-icon";
 import { useMutate } from "../../../hooks/use-mutate";
 import { Button } from "../../../components/shared/button";
 import './index.css';
+import { useQueryClient } from "@tanstack/react-query";
+import { useItems } from "../../../hooks/use-items";
 
-export const EditListing = ({ listing, onClose }) => {
-  const [name, setName] = useState(listing.name);
-  const [attributes, setAttributes] = useState(listing.attributes);
-  const [category, setCategory] = useState(listing.category);
-  const [description, setDescription] = useState(listing.description);
+export const EditListing = ({ listing, onClose, onUpdate }) => {
+  const [itemId, setItemId] = useState(listing?.itemId || '');
+  const [type, setType] = useState(listing?.type || '');
   const [picture, setPicture] = useState(null);
+  const queryClient = useQueryClient();
+  const { data } = useItems(); 
   
-  const { update } = useMutate(`/listing/${listing._id}`);
+  const { update, create: post, destroy } = useMutate(`/listing/${listing._id || ''}`, resp => {
+    queryClient.invalidateQueries(['listings']);
+    onUpdate(resp.slug);
+  });
+
+  const disabled = !itemId || !type;
   
   const handleFileChange = async (fileList) => {
     if (fileList) {
@@ -22,16 +29,27 @@ export const EditListing = ({ listing, onClose }) => {
       reader.readAsDataURL(fileList[0]);
     }
   };
+
+  const handleDelete = () => {
+    destroy();
+    onClose();
+  }
   
-  const handleUpdate = () => {
-    update.mutate({
+  const handleSubmit = () => {
+    if(listing?._id) {
+    update({
       ...listing,
-      name,
-      attributes,
-      category,
-      description,
+      type,
       ...( picture && { picture })
     })
+    } else {
+      post({
+        itemId,
+        type,
+        picture
+      });
+    }
+    onClose();
   }
   
   return (
@@ -54,29 +72,40 @@ export const EditListing = ({ listing, onClose }) => {
       </div>
       <div className="p">
         <div className="mb">
-          <Input placeholder={'Name'} onChange={setName} value={name}  />
+          { listing?._id && (
+            <div>
+              <Input placeholder={'Name'} value={listing.itemId.name} readonly />
+            </div>
+          ) ||
+            <select className="filter" name="cars" id="cars" onChange={v => setItemId(v.currentTarget.value)}>
+              {data.map(item => (
+                <option value={item._id}>{item.name}</option>
+              ))}
+            </select>
+          }
         </div>
         <div className="mb">
-          <Input placeholder={'Attributes'} onChange={setAttributes} value={attributes}  />
-        </div>
-        <div className="mb">
-          <Input placeholder={'Category'} onChange={setCategory} value={category}  />
-        </div>
-        <div className="mb">
-          <Input placeholder={'Description'} onChange={setDescription} value={description}  />
+          <Input placeholder={'Type'} onChange={setType} value={type}  />
         </div>
         <div className="flex between">
-          <div>
-            <Button variant="primary" className="w-full" onClick={handleUpdate}>
-              Save Changes
-            </Button>
+            { listing?._id && (
+            <div>
+              <Button variant="primary" className="w-full" onClick={handleDelete}>
+                Delete
+              </Button>
+            </div>
+            )}
+            <div>
+              <Button disabled={disabled} variant="primary" className="w-full" onClick={handleSubmit}>
+                {listing?._id ? 'Save Changes' : 'Create Ad'}
+              </Button>
+            </div>
+            <div>
+              <Button variant="secondary" className="w-full" onClick={onClose}>
+                Cancel
+              </Button>
+            </div>
           </div>
-          <div>
-            <Button variant="secondary" className="w-full" onClick={onClose}>
-              Cancel
-            </Button>
-          </div>
-        </div>
       </div>
     </div>  
   )

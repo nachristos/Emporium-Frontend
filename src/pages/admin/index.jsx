@@ -10,8 +10,9 @@ export const AdminPage = () => {
         <div className="w-full center">
           <h1 className="pri px">{`welcome, ${user?.alias}!`}</h1>
         </div>
-        <div className="w-full center pt">
-          <Button variant={"secondary"} onClick={() => location.pathname = '/admin/items'}>Manage Items</Button>
+        <div className="w-full pt">
+          <Button variant={"secondary"} onClick={() => location.pathname = '/admin/items'} className={'mb'}>Manage Items</Button>
+          <Button variant={"secondary"} onClick={() => location.pathname = '/admin/listings'}>Manage Ads</Button>
         </div>
       </div>
     </div>
