@@ -6,19 +6,21 @@ import { useMutate } from "../../../hooks/use-mutate";
 import { Button } from "../../../components/shared/button";
 import './index.css';
 import { useQueryClient } from "@tanstack/react-query";
+import { useItems } from "../../../hooks/use-items";
 
 export const EditListing = ({ listing, onClose, onUpdate }) => {
-  const [name, setName] = useState(listing.itemId.name);
-  const [type, setType] = useState(listing.type);
+  const [itemId, setItemId] = useState(listing?.itemId || '');
+  const [type, setType] = useState(listing?.type || '');
   const [picture, setPicture] = useState(null);
   const queryClient = useQueryClient();
+  const { data, isLoading } = useItems(); 
   
   const { update, create: post, destroy } = useMutate(`/listing/${listing._id || ''}`, resp => {
     queryClient.invalidateQueries(['listings']);
     onUpdate(resp.slug);
   });
 
-  const disabled = !name || !type;
+  const disabled = !itemId || !type;
   
   const handleFileChange = async (fileList) => {
     if (fileList) {
@@ -37,13 +39,12 @@ export const EditListing = ({ listing, onClose, onUpdate }) => {
     if(listing?._id) {
     update({
       ...listing,
-      name,
       type,
       ...( picture && { picture })
     })
     } else {
       post({
-        name,
+        itemId,
         type,
         picture
       });
@@ -71,7 +72,17 @@ export const EditListing = ({ listing, onClose, onUpdate }) => {
       </div>
       <div className="p">
         <div className="mb">
-          <Input placeholder={'Name'} onChange={setName} value={name}  />
+          { listing?._id && (
+            <div>
+              <Input placeholder={'Name'} value={listing.itemId.name} readonly />
+            </div>
+          ) ||
+            <select className="filter" name="cars" id="cars" onChange={v => setItemId(v.currentTarget.value)}>
+              {data.map(item => (
+                <option value={item._id}>{item.name}</option>
+              ))}
+            </select>
+          }
         </div>
         <div className="mb">
           <Input placeholder={'Type'} onChange={setType} value={type}  />

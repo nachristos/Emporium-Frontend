@@ -66,7 +66,7 @@ export const ManageListings = () => {
         ))}
         <div className="mt py">
           <Button variant="primary" size="large" onClick={() => setListing({})}>
-            Add New Ad
+            Create New Ad
           </Button>
         </div>
       </div>
