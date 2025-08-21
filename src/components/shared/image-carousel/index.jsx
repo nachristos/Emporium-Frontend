@@ -39,9 +39,7 @@ const ImageCarousel = ({slides, onClick}) => {
             <div className="right-arrow" onClick={next}>&#8680;</div>
             
             <a onClick={handleClick}>
-                <div className='carousel-img' style = {{backgroundImage: `url(${slides[currentIndex].imgURL})`}}>
-                    <h1 className="img-title p mx">{slides[currentIndex].title}</h1>
-                </div>
+                <div className='carousel-img' style = {{backgroundImage: `url(${slides[currentIndex].imgURL})`}} />
             </a>
             <div className="dots-container">
                 {slides.map((slide, slideIndex) => (

@@ -30,18 +30,11 @@
     opacity: 1;
 }
 
-.img-title {
-    font-size: 50px;
-    color:var(--primary-color);
-    justify-self:start;
-}
-
 .carousel-img {
-    width: 100%;
-    height: 80vh;
-    max-height: 100vw;
+    background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: 100%;
+    aspect-ratio: 16 / 9;
 }
 
 .dots-container {

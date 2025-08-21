@@ -13,7 +13,7 @@ export const EditListing = ({ listing, onClose, onUpdate }) => {
   const [type, setType] = useState(listing?.type || '');
   const [picture, setPicture] = useState(null);
   const queryClient = useQueryClient();
-  const { data, isLoading } = useItems(); 
+  const { data } = useItems(); 
   
   const { update, create: post, destroy } = useMutate(`/listing/${listing._id || ''}`, resp => {
     queryClient.invalidateQueries(['listings']);
