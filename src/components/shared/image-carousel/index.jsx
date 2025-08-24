@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './index.css'
+import { ArrowIcon } from '../../../assets/icons/arrow-icon'
 
 
 
@@ -35,8 +36,8 @@ const ImageCarousel = ({slides, onClick}) => {
     // Display
     return (
         <div className='carousel-wrapper w-full' >
-            <div className="left-arrow arrow" onClick={previous}>&#8678;</div>
-            <div className="right-arrow arrow" onClick={next}>&#8680;</div>
+            <div className="left-arrow arrow" onClick={previous}><ArrowIcon /></div>
+            <div className="right-arrow arrow" onClick={next}><ArrowIcon /></div>
             
             <a onClick={handleClick}>
                 <div className='carousel-img' style = {{backgroundImage: `url(${slides[currentIndex].imgURL})`}} />

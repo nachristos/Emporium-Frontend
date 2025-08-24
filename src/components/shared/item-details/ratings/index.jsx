@@ -6,9 +6,11 @@ import { Input } from "../../input"
 import './index.css'
 import { useMutate } from "../../../../hooks/use-mutate"
 import { useQueryClient } from "@tanstack/react-query"
+import { useAuthContext } from "../../../../hooks/use-auth-context"
 
 export const Ratings = ({ item, ratings = [] }) => {
   const queryClient = useQueryClient();
+  const { token } = useAuthContext();
   const [review, setReview] = useState();
   const [reviewScore, setReviewScore] = useState(1);
   const [reviewComments, setReviewComments] = useState('');
@@ -54,7 +56,7 @@ export const Ratings = ({ item, ratings = [] }) => {
       <div>
         <h3>{summary}</h3>
       </div>
-      <div className="py">
+      <div className="pt">
         <div className="flex mb between">
           <h1 className="strong pri">5 stars</h1>
           <Star fill />
@@ -81,9 +83,11 @@ export const Ratings = ({ item, ratings = [] }) => {
           <div className="bar" style={{ background: `linear-gradient(90deg, #FFD700 ${percentages[1]}%, #F5F5F5 1%)`}}/>
         </div>
       </div>
-      <div>
+      { !!token && (
+        <div className="pt">
         <Button variant={'secondary'} onClick={() => setReview(!review)}>{ !review ? 'Write a review' : 'Cancel'}</Button>
-      </div>
+        </div>
+      )}
       { review ? (
         <div className="user-review pt">
           <div>
