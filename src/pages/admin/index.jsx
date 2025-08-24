@@ -12,7 +12,8 @@ export const AdminPage = () => {
         </div>
         <div className="w-full pt">
           <Button variant={"secondary"} onClick={() => location.pathname = '/admin/items'} className={'mb'}>Manage Items</Button>
-          <Button variant={"secondary"} onClick={() => location.pathname = '/admin/listings'}>Manage Ads</Button>
+          <Button variant={"secondary"} onClick={() => location.pathname = '/admin/listings'} className={'mb'}>Manage Ads</Button>
+          <Button variant={"secondary"} onClick={() => location.pathname = '/admin/purchases'} className={'mb'}>Review Purchases</Button>
         </div>
       </div>
     </div>

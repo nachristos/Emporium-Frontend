@@ -1,0 +1,31 @@
+.item-row {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.item-row .name {
+  width: 220px;
+  display: block;
+  text-align: start;
+  white-space: nowrap;
+  padding-right: 10px;
+}
+
+.item-row .details {
+  display: flex;
+  overflow: hidden;
+  width: 100px;
+  white-space: nowrap;
+  padding-inline: 30px;
+}
+
+.item-row h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 660px) {
+  .item-row .details {
+    display: none;
+  }
+}
