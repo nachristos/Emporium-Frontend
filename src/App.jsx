@@ -16,6 +16,7 @@ import { AdminPage } from './pages/admin/index.jsx'
 import bgImage from './assets/bg.png'
 import { ManageItems } from './pages/admin/manage-items/index.jsx'
 import { ManageListings } from './pages/admin/manage-listings/index.jsx'
+import { ManagePurchases } from './pages/admin/manage-purchases/index.jsx'
 
 
 const queryClient = new QueryClient()
@@ -40,6 +41,7 @@ function App() {
                   <Route path={'/admin'} element={<UserContextProvider children={<AdminPage />} />}/>
                   <Route path={'/admin/items'} element={<UserContextProvider children={<ManageItems />} />}/>
                   <Route path={'/admin/listings'} element={<UserContextProvider children={<ManageListings />} />}/>
+                  <Route path={'/admin/purchases'} element={<UserContextProvider children={<ManagePurchases />} />}/>
                 </Routes>
             </div>
           </AuthContextProvider>
