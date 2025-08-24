@@ -1,12 +1,7 @@
-import { useState } from "react";
 import { Input } from "../../../components/shared/input";
-import { ImageIcon } from "../../../assets/icons/image-icon";
-import { UploadIcon } from "../../../assets/icons/upload-icon";
-import { useMutate } from "../../../hooks/use-mutate";
 import { Button } from "../../../components/shared/button";
 import './index.css';
 import { useQueryClient } from "@tanstack/react-query";
-import { usePurchases } from "../../../hooks/use-purchases";
 
 export const ViewPurchase = ({ purchase, onClose, onUpdate }) => {
   const queryClient = useQueryClient();
@@ -16,23 +11,26 @@ export const ViewPurchase = ({ purchase, onClose, onUpdate }) => {
     <div className="w-full listing-edit p">
       <div className="">
         <div className="mb">
-            <div>
-              <Input placeholder={'Customer Email'} value={purchase.customerEmail} readOnly />
+            <div className="w-full  heading"> 
+                <h3 >Customer Email: </h3>
+                <h4 className="strong text">{purchase.customerEmail}</h4>
             </div>
-            <div className="w-full p">
-              <h3>Items: </h3>
+            <div className="w-full  heading">
+              <h3>Purchased Items: </h3>
               {data.map((p, index )=> (
-                <div className="w-full p">
-                    <Input value= {` Item ${index + 1}:`}  readonly />
-                    <Input value= {`${p.iname}`}  readonly />
-                    <Input value= {`Quantity: ${p.quantity}`}  readonly />
-                    <Input value= {`Price: $${(p.amount/100).toFixed(2)} each`}  readonly />
+                <div className="p text">
+                    <div className="flex">
+                        <h3 className="strong">{` Item ${index + 1}: ${p.iname}`}</h3>
+                    </div>
+                    <h4 className="strong">{`Quantity: ${p.quantity}`}</h4>
+                    <h4 className="strong">{`Price: $${(p.amount/100).toFixed(2)} each`}</h4>
                 </div>
                 
               ))}
             </div>
-            <div>
-              <Input placeholder={'Total'} value={(purchase.total/100).toFixed(2)} readOnly />
+            <div className="w-full  heading">
+                <h3>Total: </h3>
+                <h4 className="strong text">{(purchase.total/100).toFixed(2)}</h4>
             </div>
         </div>
         <div className="flex between">

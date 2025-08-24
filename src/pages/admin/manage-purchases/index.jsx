@@ -23,7 +23,7 @@ export const ManagePurchases = () => {
           <ViewPurchase purchase={purchase} onClose={() => setPurchase(undefined)} />
         </div>
       ): (
-      <div className="scrollable w-full center">
+      <div className="scrollable w-full mt">
         <div className="w-full center">
           <h1 className="pri px">Review Purchases</h1>
         </div>
@@ -46,7 +46,7 @@ export const ManagePurchases = () => {
             <div className="px"/>
           </div>
         </div>
-        {data.map(purchase => (
+        {data.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt)).map(purchase => (
           <div key={purchase._id} className="item-row flex w-full text">
             <div className="flex between w-full">
               <div className="name">
