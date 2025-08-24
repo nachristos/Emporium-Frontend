@@ -27,6 +27,11 @@
   justify-content: space-between;
 }
 
+.items {
+  max-height: calc(100vh - 254px);
+  overflow: scroll;
+}
+
 .cart.open {
   right: 0;
 }

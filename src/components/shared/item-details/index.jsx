@@ -10,11 +10,13 @@ import './index.css';
 import { EditItem } from "../../../pages/admin/item/edit-item";
 import { EditIcon } from "../../../assets/icons/edit-icon";
 import { AuthWrapper } from "../auth-wrapper";
+import { Rating } from "../rating";
+import { Ratings } from "./ratings";
 
 export const ItemDetails = ({ item, onClose, onUpdate }) => {
   const { updateItem, open, cart } = useCartContext();
-  const [description, setDescription] = useState(false);
-  const [details, setDetails] = useState(false);
+  const [description, setDescription] = useState(window.innerWidth > 1000 || false);
+  const [details, setDetails] = useState(window.innerWidth > 1000 || false);
   const [edit, setEdit] = useState(false);
   const [quantity, setQuantity] = useState(1);
   
@@ -66,14 +68,17 @@ export const ItemDetails = ({ item, onClose, onUpdate }) => {
               </IconButton>
             </AuthWrapper>
           </div>
-            <div className="w-full flex wrap middle item-page">
-              <img className="image" src={item.imgURL || placeholderImg} /> 
-              <div className="info">
-                <div className="p">
+            <div className="item-page">
+              <div className="flex wrap middle">
+                <img className="image" src={item.imgURL || placeholderImg} /> 
+                <div className="info p flex-col middle">
                   <div className="mb">
-                    <h2>
+                    <h2 className="heading">
                       {item.name}
                     </h2>
+                    <div>
+                      <Rating ratings={item.ratings} />
+                    </div>
                   </div>
                   <div className="divider between text strong py">
                     <h3>
@@ -86,12 +91,14 @@ export const ItemDetails = ({ item, onClose, onUpdate }) => {
                   <div className="between text strong">
                     <Quantity value={quantity} onChange={handleSetQuantity} />
                   </div>
-                  <div className="py">
+                  <div className="py mt">
                     <Button onClick={handleAddToCart} variant={'primary'} size="large" >Add to cart</Button>
                   </div>
                 </div>
-                <div className="text px">
-                  <div className="between pt divider">
+              </div>
+              <div className="flex wrap middle">
+                <div className="info text px">
+                  <div className="between pt">
                     <h3 className="heading" style={{ textwrap: 'balance'}}>
                       Product specifications
                     </h3>
@@ -120,6 +127,11 @@ export const ItemDetails = ({ item, onClose, onUpdate }) => {
                           <FormatText textArray={item.description} />
                       </div>
                     )}
+                  </div>
+                </div>
+                <div className="info reviews text px">
+                  <div className="divider pt">
+                    <Ratings item={item} ratings={item.ratings} />
                   </div>
                 </div>
               </div>

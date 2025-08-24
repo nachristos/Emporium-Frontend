@@ -2,6 +2,7 @@ import { CardBase } from "../../../components/shared/card-base";
 import placeholderImg from "/weapon.png";
 import './index.css';
 import { useCartContext } from "../../../hooks/use-cart-context";
+import { Rating } from "../rating";
 
 export const ItemCard = ({ item, onClick }) => {
   const { updateItem, open, cart } = useCartContext();
@@ -15,6 +16,7 @@ export const ItemCard = ({ item, onClick }) => {
     <div id={item._id} className="item-card">
       <a onClick={() => onClick(item.slug)}>
         <CardBase>
+          <Rating ratings={item.ratings} />
           <div>
             <img src={item.imgURL || placeholderImg} />
           </div>
