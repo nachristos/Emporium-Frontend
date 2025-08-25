@@ -11,14 +11,6 @@ export const ManagePurchases = () => {
   const { data, loading } = usePurchases();
   const [purchase, setPurchase] = useState(false);
 
-//   const PWrapper = ({ children }) => {
-//         if (!(purchase.shipped) || purchase.shipped !== true) {
-//             return null;
-//         }
-        
-//         return <>{children}</>;
-//     };
-
   if (!data || loading) {
     return <Loader />;
   }
@@ -65,9 +57,6 @@ export const ManagePurchases = () => {
               <div className="details">
                 <h3>{`${(purchase.total/100).toFixed(2)}`}</h3>
               </div>
-              {/* <PWrapper>
-                    <Button size={'small'} variant={'tertiary'} >view</Button>
-              </PWrapper> */}
                     
               <IconButton onClick={() => setPurchase(purchase)}>
                 <Button size={'small'} variant={'secondary'} >view</Button>
