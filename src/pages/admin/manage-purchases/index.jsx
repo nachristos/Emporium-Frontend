@@ -55,7 +55,7 @@ export const ManagePurchases = () => {
                 <h3>{purchase.customerEmail}</h3>
               </div>
               <div className="details">
-                <h3>{`${(purchase.total/100).toFixed(2)}`}</h3>
+                <h3>{`$${(purchase.total/100).toFixed(2)}`}</h3>
               </div>
                     
               <IconButton onClick={() => setPurchase(purchase)}>
