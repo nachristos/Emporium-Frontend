@@ -12,6 +12,7 @@
   height: 294px;
   text-align: center;
   margin-bottom: 20px;
+  margin-inline: auto;
 }
 
 .email-sent img {
