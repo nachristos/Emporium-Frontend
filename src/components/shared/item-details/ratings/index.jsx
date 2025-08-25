@@ -21,9 +21,11 @@ export const Ratings = ({ item, ratings = [] }) => {
   
   const percentages = useMemo(() => {
     return ratings.reduce((a, i) => {
-      return { ...a, [i.score]: (a[i.score] + 1) / ratings.length * 100 };
+      return { ...a, [i.score]: a[i.score] + (1 / ratings.length * 100) };
     }, { [1]: 0, [2]: 0, [3]: 0, [4]: 0, [5]: 0});
   },[ratings])
+  
+  console.log('percentages',percentages)
   
   const positiveRatings = useMemo(() => percentages[5] + percentages[4], [percentages]);
   
