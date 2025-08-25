@@ -24,6 +24,10 @@
   text-overflow: ellipsis;
 }
 
+.unread {
+  color: red;
+}
+
 @media screen and (max-width: 660px) {
   .item-row .details {
     display: none;
