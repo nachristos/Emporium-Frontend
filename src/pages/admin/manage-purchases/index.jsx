@@ -3,7 +3,6 @@ import { Loader } from "../../../components/shared/loader";
 import { usePurchases } from "../../../hooks/use-purchases";
 import './index.css';
 import { IconButton } from "../../../components/shared/icon-button";
-import { EditIcon } from "../../../assets/icons/edit-icon";
 import { ViewPurchase } from "../purchase/view-purchase";
 import { Button } from "../../../components/shared/button";
 import { CloseIcon } from "../../../assets/icons/close-icon";

@@ -6,7 +6,7 @@ export const About = () => {
   return (
     <div className='scrollable about'>
         <div className="w-full mb center">
-            <h1 className="img-title">Our Evil Origins</h1>
+            <h1 className="img-title pri">Our Evil Origins</h1>
         </div>
         <div className="flex p center">
             <div className='flex wrap center'>
