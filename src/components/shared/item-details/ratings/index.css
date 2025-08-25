@@ -1,0 +1,16 @@
+
+.user-review .star {
+  height: 34px;
+  width: 34px;
+  margin: 4px;
+}
+
+.user-review h1 {
+  margin-top: 4px;
+  margin-left: 18px;
+}
+
+.user-reviews .rating {
+  padding-inline: 0;
+  padding-top: 20px;
+}

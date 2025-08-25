@@ -18,9 +18,32 @@
 .item-page .info {
   width: 100vw;
   max-width: 500px;
+  box-sizing: border-box;
 }
 
 .close .icon {
   width: 60px;
   height: 60px;
+}
+
+.item-page .star {
+  width: 24px;
+  height: 20px;
+}
+
+.reviews .rating {
+  padding: 6px;
+}
+
+.reviews .strong {
+  margin-block:  0;
+  margin-right: 10px;
+}
+
+.reviews .bar {
+  width: calc(100% - 100px);
+  height: 10px;
+  margin-left: 10px;
+  margin-top: 11px;
+  border-radius: 6px;
 }

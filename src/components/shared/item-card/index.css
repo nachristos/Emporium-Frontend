@@ -43,3 +43,9 @@
   background-color: var(--text-color);
   color: var(--cta-color);
 }
+
+.item-card .rating {
+  position: absolute;
+  top: 4px;
+  left: 8px;
+}

@@ -41,7 +41,7 @@ export const Cart = ({ ref, open, onClose, items }) => {
           <div className='flex-col text center'>
             <h2 className="mb">Cart</h2>
             <div className="w-full divider"/>
-            <div className='w-full'>
+            <div className='w-full items'>
               {items?.map(i => (
                 <div key={i.item?._id} className='pt'>
                   <div className="flex">
@@ -72,9 +72,9 @@ export const Cart = ({ ref, open, onClose, items }) => {
             </div>
           </div>
         </div>
-        <div className='w-full mb'>
+        <div className='w-full mb divider'>
             {!!items && (
-              <div className='end text'>
+              <div className='end text mys'>
                 <h2>{`Total: $${(total / 100).toFixed(2)}`}</h2>
               </div>
             )}

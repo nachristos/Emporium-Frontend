@@ -25,6 +25,7 @@
 
 .right-arrow {
     right: 10px;
+    rotate: 180deg;
 }
 
 .right-arrow:hover , .left-arrow:hover {
